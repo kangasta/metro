@@ -19,6 +19,16 @@
 	100% {opacity: 0.25;}
 }
 
+.app-effect-link {
+	cursor: pointer;
+	opacity: 1;
+	transition: opacity 0.5s;
+}
+
+.app-effect-link:hover {
+	opacity: 0.75;
+}
+
 .app {
 	background: var(--theme-primary-color);
 	height: 100%;
@@ -85,9 +95,6 @@
 
 	float: right;
 	font-size: calc(100% * var(--scale));
-	/*
-	font-weight: bold;
-	*/
 	height: calc(2em / var(--scale));
 	line-height: calc(2em / var(--scale));
 	margin-left: calc(0.5em / var(--scale));
