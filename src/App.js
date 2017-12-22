@@ -10,9 +10,6 @@ class App extends Component {
 				waiting: 'Waiting location.'
 			}
 		};
-
-		//this.getCoords = this.getCoords.bind(this);
-		//this.sendQueryAndUpdateState = this.sendQueryAndUpdateState.bind(this);
 	}
 
 	componentDidMount() {
@@ -24,26 +21,32 @@ class App extends Component {
 				this.sendQueryAndUpdateState();
 			})
 			.catch(()=>{
-				this.setState({data: {error: 'Unhandled error.'}});
+				this.errorIfNotError();
 			});
 
-		this.setState({coordsIntervalId: setInterval(() => {
+		this.setState({queryIntervalId: setInterval(() => {
 			this.sendQueryAndUpdateState();
 		}, 15000)});
 		this.setState({coordsIntervalId: setInterval(() => {
 			this.getCoords()
 				.catch(()=>{
-					this.setState({data: {error: 'Unhandled error.'}});
+					this.errorIfNotError();
 				});
 		}, 60000)});
 	}
 
 	componentWillUnmount() {
+		clearInterval(this.state.queryIntervalId);
 		clearInterval(this.state.coordsIntervalId);
 	}
 
+	errorIfNotError() {
+		if (this.state.data.hasOwnProperty('error')) return;
+		this.setState({data: {error: 'Unhandled error.'}});
+	}
+
 	getCoords() {
-		return (new Promise((resolve)=>{
+		return (new Promise((resolve, reject)=>{
 			if (navigator.geolocation) {
 				navigator.geolocation.getCurrentPosition((position)=>{
 					this.setState({
@@ -54,12 +57,20 @@ class App extends Component {
 						}
 					},resolve);
 				}, ()=>{
-					this.setState({data: {error: 'No location available.'}},resolve);
+					this.setState({data: {error: 'No location detected.'}},reject);
 				});
 			} else {
-				this.setState({data: {error: 'Geolocation not available.'}},resolve);
+				this.setState({data: {error: 'Geolocation not available.'}},reject);
 			}
 		}));
+	}
+
+	setCoords(coords) {
+		this.setState({coords: coords},()=>{
+			if (this.state.hasOwnProperty('coordsIntervalId'))
+				clearInterval(this.state.coordsIntervalId);
+			this.sendQueryAndUpdateState();
+		});
 	}
 
 	sendQueryAndUpdateState() {
@@ -85,6 +96,7 @@ class App extends Component {
 					var stops = data.stopsByRadius.edges.filter(a => {
 						return a.node.stop.vehicleType === vehicleType;
 					});
+					this.setState({data: {error: 'No stops found.'}});
 					stops.sort((a,b)=>{
 						if (a.node.distance < b.node.distance) return -1;
 						if (a.node.distance > b.node.distance) return 1;
@@ -99,13 +111,22 @@ class App extends Component {
 						if (a.realtimeDeparture > b.realtimeDeparture) return 1;
 						return 0;
 					});
-					this.setState({data: {location: location, departures: departures.map(departure => {
-						return {
-							destination: departure.headsign,
-							leaves_in: (departure.realtimeDeparture / 60 - App.currentTimeInMinutes()),
-							is_realtime: departure.realtime
-						};
-					})}});
+
+					this.setState({data: {
+						location: location,
+						departures: departures.map(departure => {
+							var rt_dep = departure.realtimeDeparture / 60;
+							rt_dep = rt_dep >= App.currentTimeInMinutes() ?
+								rt_dep :
+								rt_dep + 24*60;
+							return {
+								destination: departure.headsign,
+								leaves_in: (rt_dep - App.currentTimeInMinutes()),
+								is_realtime: departure.realtime,
+								action: ()=>undefined
+							};
+						})
+					}});
 				});
 		}
 	}
@@ -131,6 +152,8 @@ class App extends Component {
 			return this.state.data.loading;
 		if (this.state.data.hasOwnProperty('waiting'))
 			return this.state.data.waiting;
+		if (!this.state.data.location)
+			return 'No nearby stations.';
 		return this.state.data.location;
 	}
 
@@ -141,9 +164,10 @@ class App extends Component {
 	}
 
 	render() {
-		const departures = this.state.data.hasOwnProperty('departures') ?
-			this.state.data.departures :
-			[];
+		var departures = require('./menuitems.json');
+		if (this.state.data.hasOwnProperty('departures') && this.state.data.departures.length) {
+			departures = this.state.data.departures;
+		}
 		return (
 			<div className='app app-theme-metro'>
 				<div className='app-content'>
@@ -152,7 +176,16 @@ class App extends Component {
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
 					{departures.slice(0,4).map((departure, i) => (
-						<div key={i} className={'app-row ' + ((departure.leaves_in <= 2) ? 'app-effect-blink' : '')}>
+						<div key={i}
+							className={
+								'app-row' +
+								' ' + ((departure.leaves_in <= 2) ? 'app-effect-blink' : '') +
+								' ' + (departure.hasOwnProperty('coords') ? 'app-effect-link' : '')}
+							onClick={departure.hasOwnProperty('coords') ?
+								()=>{ this.setCoords(departure.coords); } :
+								()=>undefined
+							}
+						>
 							<div className={'app-row-min ' + (departure.is_realtime ? 'app-row-min-rt' : '')}>
 								{departure.leaves_in}
 							</div>
