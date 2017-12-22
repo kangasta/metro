@@ -1,0 +1,38 @@
+[
+	{
+		"destination": "Tapiola",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.175062,
+			"lon": 24.803141,
+			"r":500
+		}
+	},
+	{
+		"destination": "Kamppi",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.168796,
+			"lon": 24.931762,
+			"r":500
+		}
+	},
+	{
+		"destination": "Rautatientori",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.170644,
+			"lon": 24.941437,
+			"r":500
+		}
+	},
+	{
+		"destination": "Itäkeskus",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.209852,
+			"lon": 25.077584,
+			"r":500
+		}
+	}
+]
