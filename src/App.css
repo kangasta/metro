@@ -32,7 +32,6 @@
 .app {
 	background: var(--theme-primary-color);
 	height: 100%;
-	position: fixed;
 	text-align: center;
 	width: 100%;
 }
@@ -57,7 +56,9 @@
 	--scale: 4;
 
 	font-size: calc(100% * var(--scale));
+	line-height: calc(4.5em / var(--scale));
 	height: calc(4.5em / var(--scale));
+	vertical-align: bottom;
 }
 
 .app-head-location {

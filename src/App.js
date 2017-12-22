@@ -157,6 +157,12 @@ class App extends Component {
 		return this.state.data.location;
 	}
 
+	getMSymbol() {
+		// Prepare for train station support:
+		// Symbol for train station '\uD83D\uDE89\uFE0E'
+		return 'M';
+	}
+
 	isLoading() {
 		if (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting'))
 			return true;
@@ -172,7 +178,7 @@ class App extends Component {
 			<div className='app app-theme-metro'>
 				<div className='app-content'>
 					<div className={'app-head ' + (this.isLoading() ? 'app-effect-blink' : '')}>
-						<div className='app-head-m'>M</div>
+						<div className='app-head-m'>{this.getMSymbol()}</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
 					{departures.slice(0,4).map((departure, i) => (
