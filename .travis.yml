@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - "node"
+
+#addons:
+#    code_climate:
+#      repo_token:
+
+jobs:
+    include:
+      - script: ./node_modules/.bin/eslint .;
+      - script: npm test -- --coverage;
+      - stage: deploy
+        script: npm run build;
+        deploy:
+          provider: pages
+          local_dir: build/
+          skip_cleanup: true
+          github_token: $GITHUB_TOKEN
+          on:
+            branch: master
+
+
+#after_success:
+#  - npm install -g codeclimate-test-reporter
+#  - codeclimate-test-reporter < coverage/lcov.info

@@ -1,0 +1,107 @@
+:root {
+	font-size: calc(100 * 1vh / 17);
+}
+
+.app-theme-metro {
+	--theme-primary-color: orangered;
+	--theme-secondary-color: white;
+}
+
+.app-effect-blink {
+	animation-name: blink;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+	0% {opacity: 0.25;}
+	50% {opacity: 1;}
+	100% {opacity: 0.25;}
+}
+
+.app {
+	background: var(--theme-primary-color);
+	height: 100%;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+}
+
+.app-content {
+	display: inline-block;
+	left: 50%;
+	margin-top: 0.5em;
+	margin-bottom: 1em;
+	/*
+	transform: translate(0,0);
+	*/
+}
+
+.app-head {
+	background-color: var(--theme-secondary-color);
+	border-radius: 0.5em;
+	color: var(--theme-primary-color);
+	height: 6em;
+	margin: 0.25em;
+	width: 8em;
+}
+
+.app-head-m {
+	--scale: 4;
+
+	font-size: calc(100% * var(--scale));
+	height: calc(4.5em / var(--scale));
+}
+
+.app-head-location {
+	--scale: 0.7;
+
+	font-size: calc(100% * var(--scale));
+	font-weight: bold;
+}
+
+.app-row {
+	background-color: var(--theme-secondary-color);
+	border-radius: 0.5em;
+	color: var(--theme-primary-color);
+	height: 2em;
+	margin: 0.25em;
+	width: 8em;
+}
+
+.app-row-min {
+	float: left;
+	height: 2em;
+	line-height: 2em;
+	width: 2em;
+}
+
+.app-row-min-rt {
+	font-weight: bold;
+}
+
+.app-row-dest {
+	--scale: 0.7;
+
+	float: right;
+	font-size: calc(100% * var(--scale));
+	/*
+	font-weight: bold;
+	*/
+	height: calc(2em / var(--scale));
+	line-height: calc(2em / var(--scale));
+	margin-left: calc(0.5em / var(--scale));
+	text-align: left;
+	width: calc(5.5em / var(--scale));
+}
+
+.app-footer {
+	--scale: 0.33;
+
+	bottom: calc(0.25em / var(--scale));
+	color: var(--theme-secondary-color);
+	font-size: calc(100% * var(--scale));
+	left: 50%;
+	position: fixed;
+	transform: translate(-50%,0);
+}
