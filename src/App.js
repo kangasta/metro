@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+
+import HslApiUtils from './HslApiUtils';
+
 import './App.css';
 
 class App extends Component {
-	VT_TRAM = 0;
-	VT_METRO = 1;
-
-	VT_BUS = 3;
-	VT_TRAIN = 109;
-
 	constructor(props) {
 		super(props);
 
@@ -88,17 +85,18 @@ class App extends Component {
 				headers: {
 					'Content-Type': 'application/graphql'
 				},
-				body: this.getQuery(this.state.coords.lat,this.state.coords.lon,this.state.coords.r)
+				body: HslApiUtils.getStopsByRadiusQuery(
+					this.state.coords.lat, this.state.coords.lon, this.state.coords.r)
 			})
 				.then(response => response.json())
 				.then((responseJson) => {
 					if (responseJson.hasOwnProperty('errors')){
-						this.setState({data: {error: 'Error response from HSL API.'}});
+						this.setState({data: {error: 'Error from HSL API.'}});
 					}
 					return responseJson.data;
 				})
 				.then((data)=>{
-					var vehicleType = 1;
+					var vehicleType = HslApiUtils.VT_METRO;
 					var stops = data.stopsByRadius.edges.filter(a => {
 						return a.node.stop.vehicleType === vehicleType;
 					});
@@ -106,6 +104,7 @@ class App extends Component {
 						this.setState({data: {error: 'No nearby stops.'}});
 						return;
 					}
+
 					stops.sort((a,b)=>{
 						if (a.node.distance < b.node.distance) return -1;
 						if (a.node.distance > b.node.distance) return 1;
@@ -114,10 +113,10 @@ class App extends Component {
 					const location = stops[0].node.stop.name;
 					var departures = [];
 					for (var i = 0; i < 2; i++)
-						departures = departures.concat(stops[i].node.stop.stoptimesForPatterns[0].stoptimes);
+						departures = departures.concat(stops[i].node.stop.stoptimesWithoutPatterns);
 					departures.sort((a,b)=>{
-						if (App.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < App.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
-						if (App.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) > App.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return 1;
+						if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
+						if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) > HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return 1;
 						return 0;
 					});
 
@@ -127,10 +126,10 @@ class App extends Component {
 						departures: departures
 							.filter(departure=>departure.headsign)
 							.map(departure => {
-								var rt_dep = App.fixDepartureTimeToMatchDate(departure.realtimeDeparture / 60);
+								var rt_dep = HslApiUtils.fixDepartureTimeToMatchDate(departure.realtimeDeparture / 60);
 								return {
 									destination: departure.headsign,
-									leaves_in: (rt_dep - App.currentTimeInMinutes()),
+									leaves_in: (rt_dep - HslApiUtils.currentTimeInMinutes()),
 									is_realtime: departure.realtime,
 									action: ()=>undefined
 								};
@@ -138,26 +137,6 @@ class App extends Component {
 					}});
 				});
 		}
-	}
-
-	static fixDepartureTimeToMatchDate(time_in_minutes) {
-		return time_in_minutes >= App.currentTimeInMinutes() ?
-			time_in_minutes :
-			time_in_minutes + 24*60;
-	}
-
-	static currentTimeInMinutes() {
-		const curTime = new Date();
-		const h = curTime.getHours();
-		return ((h < 4) ? (h + 24) : h )*60 + curTime.getMinutes();
-	}
-
-	getQuery(lat, lon, r=1500) {
-		return (
-			'{stopsByRadius(lat: ' + lat.toString() + ', lon: ' + lon.toString() + ', radius: ' + r.toString() + ') { ' +
-			'edges { node { distance stop { name vehicleType stoptimesForPatterns { pattern { alerts { alertHeaderText } } stoptimes { realtimeDeparture realtime headsign } } } } } }' +
-			'}'
-		);
 	}
 
 	getLocationString() {
