@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import HslApiUtils from './HslApiUtils';
+import LocationUtils from './LocationUtils';
 
 import './App.css';
 
@@ -16,26 +17,29 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		this.getCoords()
-			.then(()=>{
-				this.setState({data: {loading: 'Loading HSL data.'}});
-			})
-			.then(()=>{
-				this.sendQueryAndUpdateState();
-			})
-			.catch(()=>{
-				this.errorIfNotError();
-			});
+		this.updateCoords().then(()=>{
+			this.sendQueryAndUpdateState();
+		});
 
 		this.setState({queryIntervalId: setInterval(() => {
 			this.sendQueryAndUpdateState();
 		}, 15000)});
 		this.setState({coordsIntervalId: setInterval(() => {
-			this.getCoords()
-				.catch(()=>{
-					this.errorIfNotError();
-				});
+			this.updateCoords();
 		}, 60000)});
+	}
+
+	updateCoords() {
+		return LocationUtils.getCoords()
+			.then((coords)=>{
+				this.setState({
+					coords: coords,
+					data: {loading: 'Loading HSL data.'}
+				});
+			})
+			.catch((error_json)=>{
+				this.setState({data: error_json});
+			});
 	}
 
 	componentWillUnmount() {
@@ -46,26 +50,6 @@ class App extends Component {
 	errorIfNotError() {
 		if (this.state.data.hasOwnProperty('error')) return;
 		this.setState({data: {error: 'Unhandled error.'}});
-	}
-
-	getCoords() {
-		return (new Promise((resolve, reject)=>{
-			if (navigator.geolocation) {
-				navigator.geolocation.getCurrentPosition((position)=>{
-					this.setState({
-						coords: {
-							lat:Math.round(position.coords.latitude*1e6)/1e6,
-							lon:Math.round(position.coords.longitude*1e6)/1e6,
-							r:2000
-						}
-					},resolve);
-				}, ()=>{
-					this.setState({data: {error: 'No location detected.'}},reject);
-				});
-			} else {
-				this.setState({data: {error: 'Geolocation not available.'}},reject);
-			}
-		}));
 	}
 
 	setCoords(coords) {
@@ -86,7 +70,7 @@ class App extends Component {
 					'Content-Type': 'application/graphql'
 				},
 				body: HslApiUtils.getStopsByRadiusQuery(
-					this.state.coords.lat, this.state.coords.lon, this.state.coords.r)
+					this.state.coords.lat, this.state.coords.lon, 2000)
 			})
 				.then(response => response.json())
 				.then((responseJson) => {
