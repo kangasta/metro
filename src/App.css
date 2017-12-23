@@ -110,3 +110,15 @@
 	position: fixed;
 	transform: translate(-50%,0);
 }
+
+a {
+	color: white;
+}
+
+a:visited {
+	color: white;
+}
+
+a:hover {
+	color: white;
+}

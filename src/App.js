@@ -200,7 +200,9 @@ class App extends Component {
 							</div>
 						</div>
 					))}
-					<div className='app-footer'></div>
+					<div className='app-footer'>
+						<a className='app-effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
+					</div>
 				</div>
 			</div>
 		);
