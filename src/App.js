@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+	VT_TRAM = 0;
+	VT_METRO = 1;
+
+	VT_BUS = 3;
+	VT_TRAIN = 109;
+
 	constructor(props) {
 		super(props);
 
@@ -110,8 +116,8 @@ class App extends Component {
 					for (var i = 0; i < 2; i++)
 						departures = departures.concat(stops[i].node.stop.stoptimesForPatterns[0].stoptimes);
 					departures.sort((a,b)=>{
-						if (a.realtimeDeparture < b.realtimeDeparture) return -1;
-						if (a.realtimeDeparture > b.realtimeDeparture) return 1;
+						if (App.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < App.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
+						if (App.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) > App.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return 1;
 						return 0;
 					});
 
@@ -121,10 +127,7 @@ class App extends Component {
 						departures: departures
 							.filter(departure=>departure.headsign)
 							.map(departure => {
-								var rt_dep = departure.realtimeDeparture / 60;
-								rt_dep = rt_dep >= App.currentTimeInMinutes() ?
-									rt_dep :
-									rt_dep + 24*60;
+								var rt_dep = App.fixDepartureTimeToMatchDate(departure.realtimeDeparture / 60);
 								return {
 									destination: departure.headsign,
 									leaves_in: (rt_dep - App.currentTimeInMinutes()),
@@ -135,6 +138,12 @@ class App extends Component {
 					}});
 				});
 		}
+	}
+
+	static fixDepartureTimeToMatchDate(time_in_minutes) {
+		return time_in_minutes >= App.currentTimeInMinutes() ?
+			time_in_minutes :
+			time_in_minutes + 24*60;
 	}
 
 	static currentTimeInMinutes() {
@@ -163,9 +172,7 @@ class App extends Component {
 		return this.state.data.location;
 	}
 
-	getMSymbol() {
-		// Prepare for train station support:
-		// Symbol for train station '\uD83D\uDE89\uFE0E'
+	getSymbol() {
 		return 'M';
 	}
 
@@ -184,7 +191,7 @@ class App extends Component {
 			<div className='app app-theme-metro'>
 				<div className='app-content'>
 					<div className={'app-head ' + (this.isLoading() ? 'app-effect-blink' : '')}>
-						<div className='app-head-m'>{this.getMSymbol()}</div>
+						<div className='app-head-m'>{this.getSymbol()}</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
 					{departures.slice(0,4).map((departure, i) => (
