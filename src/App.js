@@ -96,7 +96,10 @@ class App extends Component {
 					var stops = data.stopsByRadius.edges.filter(a => {
 						return a.node.stop.vehicleType === vehicleType;
 					});
-					this.setState({data: {error: 'No stops found.'}});
+					if (!stops.length) {
+						this.setState({data: {error: 'No nearby stops.'}});
+						return;
+					}
 					stops.sort((a,b)=>{
 						if (a.node.distance < b.node.distance) return -1;
 						if (a.node.distance > b.node.distance) return 1;
@@ -114,18 +117,21 @@ class App extends Component {
 
 					this.setState({data: {
 						location: location,
-						departures: departures.map(departure => {
-							var rt_dep = departure.realtimeDeparture / 60;
-							rt_dep = rt_dep >= App.currentTimeInMinutes() ?
-								rt_dep :
-								rt_dep + 24*60;
-							return {
-								destination: departure.headsign,
-								leaves_in: (rt_dep - App.currentTimeInMinutes()),
-								is_realtime: departure.realtime,
-								action: ()=>undefined
-							};
-						})
+						vehicle_type: vehicleType,
+						departures: departures
+							.filter(departure=>departure.headsign)
+							.map(departure => {
+								var rt_dep = departure.realtimeDeparture / 60;
+								rt_dep = rt_dep >= App.currentTimeInMinutes() ?
+									rt_dep :
+									rt_dep + 24*60;
+								return {
+									destination: departure.headsign,
+									leaves_in: (rt_dep - App.currentTimeInMinutes()),
+									is_realtime: departure.realtime,
+									action: ()=>undefined
+								};
+							})
 					}});
 				});
 		}
