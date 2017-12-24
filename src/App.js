@@ -80,7 +80,9 @@ class App extends Component {
 					return responseJson.data;
 				})
 				.then((data)=>{
-					var vehicleType = HslApiUtils.VT_METRO;
+					const vehicleTypes = [HslApiUtils.VT_METRO, HslApiUtils.VT_TRAIN, HslApiUtils.VT_TRAM, HslApiUtils.VT_BUS];
+					for (var i = 0; i < vehicleTypes.length && !HslApiUtils.checkStopResponseForVehicleType(data, vehicleTypes[i]); i++);
+					var vehicleType = vehicleTypes[i];
 					var stops = data.stopsByRadius.edges.filter(a => {
 						return a.node.stop.vehicleType === vehicleType;
 					});
@@ -96,7 +98,7 @@ class App extends Component {
 					});
 					const location = stops[0].node.stop.name;
 					var departures = [];
-					for (var i = 0; i < 2; i++)
+					for (i = 0; i < 2; i++)
 						departures = departures.concat(stops[i].node.stop.stoptimesWithoutPatterns);
 					departures.sort((a,b)=>{
 						if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
@@ -151,6 +153,22 @@ class App extends Component {
 		}
 	}
 
+	getTheme() {
+		if (!this.state.data.hasOwnProperty('vehicle_type')) return 'metro';
+		switch(this.state.data.vehicle_type) {
+		case HslApiUtils.VT_METRO:
+			return 'metro';
+		case HslApiUtils.VT_TRAM:
+			return 'tram';
+		case HslApiUtils.VT_TRAIN:
+			return 'train';
+		case HslApiUtils.VT_BUS:
+			return 'bus';
+		default:
+			return 'M';
+		}
+	}
+
 	isLoading() {
 		if (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting'))
 			return true;
@@ -163,7 +181,7 @@ class App extends Component {
 			departures = this.state.data.departures;
 		}
 		return (
-			<div className='app app-theme-metro'>
+			<div className={'app app-theme-' + this.getTheme()}>
 				<div className='app-content'>
 					<div className={'app-head ' + (this.isLoading() ? 'app-effect-blink' : '')}>
 						<div className='app-head-m'>{this.getSymbol()}</div>

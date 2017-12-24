@@ -7,6 +7,21 @@
 	--theme-secondary-color: white;
 }
 
+.app-theme-tram {
+	--theme-primary-color: seagreen;
+	--theme-secondary-color: white;
+}
+
+.app-theme-train {
+	--theme-primary-color: darkmagenta;
+	--theme-secondary-color: white;
+}
+
+.app-theme-bus {
+	--theme-primary-color: dodgerblue;
+	--theme-secondary-color: white;
+}
+
 .app-effect-blink {
 	animation-name: blink;
 	animation-duration: 2s;

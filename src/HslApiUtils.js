@@ -39,6 +39,12 @@ class HslApiUtils {
 			'} } } } } }'
 		);
 	}
+
+	static checkStopResponseForVehicleType(data, vehicleType) {
+		return !!data.stopsByRadius.edges.find(a => {
+			return a.node.stop.vehicleType === vehicleType;
+		});
+	}
 }
 
 export default HslApiUtils;
