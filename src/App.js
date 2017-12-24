@@ -29,11 +29,11 @@ class App extends Component {
 		}, 60000)});
 	}
 
-	updateCoords() {
+	updateCoords(set_loading=false) {
 		return LocationUtils.getCoords()
 			.then((coords)=>{
-				this.setState({
-					coords: coords,
+				this.setState({coords: coords});
+				if (set_loading) this.setState({
 					data: {loading: 'Loading HSL data.'}
 				});
 			})
@@ -136,7 +136,19 @@ class App extends Component {
 	}
 
 	getSymbol() {
-		return 'M';
+		if (!this.state.data.hasOwnProperty('vehicle_type')) return 'M';
+		switch(this.state.data.vehicle_type) {
+		case HslApiUtils.VT_METRO:
+			return HslApiUtils.MetroImg;
+		case HslApiUtils.VT_TRAM:
+			return HslApiUtils.TramImg;
+		case HslApiUtils.VT_TRAIN:
+			return HslApiUtils.TrainImg;
+		case HslApiUtils.VT_BUS:
+			return HslApiUtils.BusImg;
+		default:
+			return 'M';
+		}
 	}
 
 	isLoading() {

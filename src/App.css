@@ -61,6 +61,11 @@
 	vertical-align: bottom;
 }
 
+.app-head-m img {
+	display: inline-block;
+	height: calc(3em / var(--scale));
+}
+
 .app-head-location {
 	--scale: 0.7;
 
