@@ -97,8 +97,11 @@ class App extends Component {
 						return 0;
 					});
 					const location = stops[0].node.stop.name;
+					stops = stops.filter((stop)=>{
+						return stop.node.stop.name === location;
+					});
 					var departures = [];
-					for (i = 0; i < 2; i++)
+					for (i = 0; i < stops.length; i++)
 						departures = departures.concat(stops[i].node.stop.stoptimesWithoutPatterns);
 					departures.sort((a,b)=>{
 						if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
