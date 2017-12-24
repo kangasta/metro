@@ -49,6 +49,7 @@
 	height: 100%;
 	text-align: center;
 	width: 100%;
+	transition: background 0.33s;
 }
 
 .app-content {
