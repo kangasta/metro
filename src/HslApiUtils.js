@@ -11,10 +11,10 @@ class HslApiUtils {
 	static VT_TRAIN = 109;
 	static VT_TRAM = 0;
 
-	static BusImg = <img src={bus}/>;
-	static MetroImg = <img src={metro}/>;
-	static TrainImg = <img src={train}/>;
-	static TramImg = <img src={tram}/>;
+	static BusImg = <img src={bus} alt='B'/>;
+	static MetroImg = <img src={metro} alt='M'/>;
+	static TrainImg = <img src={train} alt='S'/>;
+	static TramImg = <img src={tram} alt='T'/>;
 
 	static currentTimeInMinutes() {
 		const curTime = new Date();
