@@ -1,8 +1,20 @@
+import React from 'react';
+
+import bus from './img/bus.svg';
+import metro from './img/metro.svg';
+import train from './img/train.svg';
+import tram from './img/tram.svg';
+
 class HslApiUtils {
-	static VT_TRAM = 0;
-	static VT_METRO = 1;
 	static VT_BUS = 3;
+	static VT_METRO = 1;
 	static VT_TRAIN = 109;
+	static VT_TRAM = 0;
+
+	static BusImg = <img src={bus}/>;
+	static MetroImg = <img src={metro}/>;
+	static TrainImg = <img src={train}/>;
+	static TramImg = <img src={tram}/>;
 
 	static currentTimeInMinutes() {
 		const curTime = new Date();
