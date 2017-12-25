@@ -4,6 +4,8 @@
   "version": "0.9.0",
   "private": true,
   "devDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "react-scripts": "1.0.17"
   },
   "dependencies": {
