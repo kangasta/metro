@@ -26,6 +26,9 @@ class HslApiUtils {
 	}
 
 	static fixDepartureTimeToMatchDate(time_in_minutes) {
+		time_in_minutes = (time_in_minutes > 24*60) ?
+			(time_in_minutes - 24*60) :
+			time_in_minutes;
 		return time_in_minutes >= HslApiUtils.currentTimeInMinutes() ?
 			time_in_minutes :
 			time_in_minutes + 24*60;

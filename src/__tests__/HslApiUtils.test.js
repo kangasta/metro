@@ -17,6 +17,10 @@ describe('HslApiUtils.fixDepartureTimeToMatchDate',()=>{
 		expect(HslApiUtils.fixDepartureTimeToMatchDate(time_in_minutes)).toEqual(time_in_minutes);
 		expect(HslApiUtils.fixDepartureTimeToMatchDate(time_in_minutes+10)).toEqual(time_in_minutes+10);
 	});
+	it('fixes todays departures to todays clock',()=>{
+		const time_in_minutes = HslApiUtils.currentTimeInMinutes();
+		expect(HslApiUtils.fixDepartureTimeToMatchDate(time_in_minutes+10+24*60)).toEqual(time_in_minutes+10);
+	});
 });
 
 describe('HslApiUtils.leavesIn',()=>{
