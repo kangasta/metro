@@ -1,26 +1,69 @@
 .departure-row {
+	--departure-row-height: 1.55em;
+	--departure-row-route-height: 1em;
+
 	background-color: var(--theme-secondary-color);
 	border-radius: 0.5em;
 	color: var(--theme-primary-color);
-	height: 2em;
+	height: var(--departure-row-height);
 	margin: 0.25em;
 	width: 8em;
 }
 
 .departure-row-min {
+	--scale: 0.75;
+
 	float: left;
-	height: 2em;
-	line-height: 2em;
+	font-size: calc(100% * var(--scale));
+	height: calc(var(--departure-row-height) / var(--scale));
+	line-height: calc(var(--departure-row-height) / var(--scale));
+	margin-left: calc(0.25em / var(--scale));
 	overflow: hidden;
-	width: 2em;
+	width: calc(1em / var(--scale));
 }
 
 .departure-row-min-rt {
 	font-weight: bold;
 }
 
+.theme-metro .departure-row-min {
+	--scale: 1;
+
+	margin-left: 0;
+	width: calc(2em / var(--scale));
+}
+
+.theme-default .departure-row-min {
+	--scale: 1;
+
+	margin-left: 0;
+	width: calc(2em / var(--scale));
+}
+
 .departure-row-route {
+	--scale: 0.5;
+	--top-bottom-margins: calc((var(--departure-row-height) - var(--departure-row-route-height)) / (2 * var(--scale)));
+
+	background-color: var(--theme-primary-color);
+	border-radius: calc(0.25em / var(--scale));
+	color: var(--theme-secondary-color);
+	float: left;
+	font-size: calc(100% * var(--scale));
+	height: calc(var(--departure-row-route-height) / var(--scale));
+	line-height: calc(var(--departure-row-route-height) / var(--scale));
+	margin: var(--top-bottom-margins) 0 var(--top-bottom-margins) calc(0.25em / var(--scale));
+	overflow: hidden;
+	width: calc(1em / var(--scale));
+}
+
+.theme-metro .departure-row-route {
 	display: none;
+	width: 0;
+}
+
+.theme-default .departure-row-route {
+	display: none;
+	width: 0;
 }
 
 .departure-row-dest {
@@ -28,10 +71,18 @@
 
 	float: right;
 	font-size: calc(100% * var(--scale));
-	height: calc(2em / var(--scale));
-	line-height: calc(2em / var(--scale));
+	height: calc(var(--departure-row-height) / var(--scale));
+	line-height: calc(var(--departure-row-height) / var(--scale));
 	margin-left: calc(0.5em / var(--scale));
 	overflow: hidden;
 	text-align: left;
+	width: calc(5em / var(--scale));
+}
+
+.theme-metro .departure-row-dest {
+	width: calc(5.5em / var(--scale));
+}
+
+.theme-default .departure-row-dest {
 	width: calc(5.5em / var(--scale));
 }

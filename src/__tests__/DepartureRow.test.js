@@ -6,6 +6,7 @@ describe('DepartureRow',()=>{
 	it('renders without crashing with valid props', () => {
 		mount(<DepartureRow departure={{
 			destination: 'unknown',
+			route: 66,
 			leaves_in: 4,
 			is_realtime: true
 		}}/>);
@@ -15,6 +16,7 @@ describe('DepartureRow',()=>{
 		for (var i = 0; i < 4; i++) {
 			const wrapper = mount(<DepartureRow departure={{
 				destination: 'unknown',
+				route: 66,
 				leaves_in: i,
 				is_realtime: true
 			}}/>);
@@ -24,6 +26,7 @@ describe('DepartureRow',()=>{
 	it('has default on click callback', () => {
 		const wrapper = shallow(<DepartureRow departure={{
 			destination: 'unknown',
+			route: 66,
 			leaves_in: 4,
 			is_realtime: true
 		}}/>);
