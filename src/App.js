@@ -124,6 +124,7 @@ class App extends Component {
 									route: departure.trip.route.shortName,
 									leaves_in: Math.round(rt_dep - HslApiUtils.currentTimeInMinutes()),
 									is_realtime: departure.realtime,
+									vehicle_type: vehicleType,
 									action: ()=>undefined
 								};
 							})
@@ -190,6 +191,7 @@ class App extends Component {
 		}
 		return (
 			<div className={'app theme-' + this.getTheme()}>
+				<div className='app-background'/>
 				<div className='app-content'>
 					<div className={'app-head'}>
 						<div className='app-head-m'>
@@ -197,7 +199,7 @@ class App extends Component {
 						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
-					{departures.slice(0,4).map((departure, i) => (
+					{departures.slice(0,5).map((departure, i) => (
 						<DepartureRow
 							key={i}
 							departure={departure}
