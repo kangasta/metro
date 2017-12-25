@@ -26,7 +26,13 @@
 	display: inline-block;
 	left: 50%;
 	margin-top: 0.25rem;
+	transition: width 0.33s;
 	vertical-align:top;
+	width: 8.5rem;
+}
+
+.app-col-empty {
+	width: 0;
 }
 
 .app-head {

@@ -1,6 +1,6 @@
 @media screen and (orientation:portrait) {
 	.effect-landscape-only {
-		display: none;
+		display: none !important;
 	}
 }
 

@@ -211,10 +211,10 @@ class App extends Component {
 				</div>
 				{[6,15].map((first,i)=>{
 					return (
-						<div key={i} className='effect-landscape-only'>
-							<div className='app-col'>
-								{this.getDepartureRowList(departures,first,first+9)}
-							</div>
+						<div key={i}
+							className={'app-col effect-landscape-only ' +
+								((first >= departures.length) ? 'app-col-empty' : '')}>
+							{this.getDepartureRowList(departures,first,first+9)}
 						</div>
 					);
 				})}
