@@ -118,7 +118,8 @@ class App extends Component {
 								var rt_dep = HslApiUtils.fixDepartureTimeToMatchDate(departure.realtimeDeparture / 60);
 								return {
 									destination: departure.headsign,
-									leaves_in: (rt_dep - HslApiUtils.currentTimeInMinutes()),
+									route: departure.trip.route.shortName,
+									leaves_in: Math.round(rt_dep - HslApiUtils.currentTimeInMinutes()),
 									is_realtime: departure.realtime,
 									action: ()=>undefined
 								};
