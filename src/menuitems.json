@@ -1,5 +1,14 @@
 [
 	{
+		"destination": "Pasila",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.199721,
+			"lon": 24.932629,
+			"r":500
+		}
+	},
+	{
 		"destination": "Tapiola",
 		"leaves_in": "\uD83D\uDE89\uFE0E",
 		"coords": {
