@@ -71,7 +71,7 @@ describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 	it('removes duplicates from combined stoptimes array',()=>{
 		const response = require('../__mocks__/stopsByRadius_niittykumpu.json');
-		var stoptimes = []
+		var stoptimes = [];
 		for (var i = 0; i<3; i++) {
 			stoptimes = stoptimes.concat(response.data.stopsByRadius.edges[Math.min(1,i)].node.stop.stoptimesWithoutPatterns);
 		}
