@@ -1,32 +1,8 @@
 @import url("Effects.css");
+@import url("Themes.css");
 
 :root {
 	font-size: calc(100 * 1vh / 17);
-}
-
-.app-theme-metro {
-	--theme-primary-color: orangered;
-	--theme-secondary-color: white;
-}
-
-.app-theme-tram {
-	--theme-primary-color: seagreen;
-	--theme-secondary-color: white;
-}
-
-.app-theme-train {
-	--theme-primary-color: darkmagenta;
-	--theme-secondary-color: white;
-}
-
-.app-theme-bus {
-	--theme-primary-color: dodgerblue;
-	--theme-secondary-color: white;
-}
-
-.app-theme-default {
-	--theme-primary-color: LightSkyBlue ;
-	--theme-secondary-color: white;
 }
 
 .app {

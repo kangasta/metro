@@ -1,0 +1,24 @@
+.theme-metro {
+	--theme-primary-color: orangered;
+	--theme-secondary-color: white;
+}
+
+.theme-tram {
+	--theme-primary-color: seagreen;
+	--theme-secondary-color: white;
+}
+
+.theme-train {
+	--theme-primary-color: darkmagenta;
+	--theme-secondary-color: white;
+}
+
+.theme-bus {
+	--theme-primary-color: dodgerblue;
+	--theme-secondary-color: white;
+}
+
+.theme-default {
+	--theme-primary-color: LightSkyBlue ;
+	--theme-secondary-color: white;
+}

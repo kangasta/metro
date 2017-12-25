@@ -189,7 +189,7 @@ class App extends Component {
 			departures = this.state.data.departures;
 		}
 		return (
-			<div className={'app app-theme-' + this.getTheme()}>
+			<div className={'app theme-' + this.getTheme()}>
 				<div className='app-content'>
 					<div className={'app-head'}>
 						<div className='app-head-m'>
