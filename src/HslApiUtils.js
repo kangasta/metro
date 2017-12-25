@@ -45,6 +45,18 @@ class HslApiUtils {
 			return a.node.stop.vehicleType === vehicleType;
 		});
 	}
+
+	static filterOutStoptimesWithoutPatternsDuplicates(stoptimesWithoutPatterns) {
+		var departures = [];
+		return stoptimesWithoutPatterns.filter((departure)=>{
+			const departure_str = departure.realtimeDeparture + ',' +
+				departure.trip.route.shortName + ',' +
+				departure.headsign;
+			if (departures.includes(departure_str)) return false;
+			departures.push(departure_str);
+			return true;
+		});
+	}
 }
 
 export default HslApiUtils;

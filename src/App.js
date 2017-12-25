@@ -109,6 +109,8 @@ class App extends Component {
 						return 0;
 					});
 
+					departures = HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates(departures);
+
 					this.setState({data: {
 						location: location,
 						vehicle_type: vehicleType,
