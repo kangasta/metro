@@ -1,13 +1,13 @@
 .departure-row {
-	--departure-row-height: 1.55em;
-	--departure-row-route-height: 1em;
+	--departure-row-height: 1.5rem;
+	--departure-row-route-height: 1rem;
 
 	background-color: var(--theme-secondary-color);
-	border-radius: 0.5em;
+	border-radius: 0.5rem;
 	color: var(--theme-primary-color);
 	height: var(--departure-row-height);
-	margin: 0.25em;
-	width: 8em;
+	margin: 0.25rem;
+	width: 8rem;
 }
 
 .departure-row-min {
@@ -15,11 +15,11 @@
 
 	float: left;
 	font-size: calc(100% * var(--scale));
-	height: calc(var(--departure-row-height) / var(--scale));
-	line-height: calc(var(--departure-row-height) / var(--scale));
-	margin-left: calc(0.25em / var(--scale));
+	height: var(--departure-row-height);
+	line-height: var(--departure-row-height);
+	margin-left: 0.25rem;
 	overflow: hidden;
-	width: calc(1em / var(--scale));
+	width: 1rem;
 }
 
 .departure-row-min-rt {
@@ -30,30 +30,30 @@
 	--scale: 1;
 
 	margin-left: 0;
-	width: calc(2em / var(--scale));
+	width: 2rem;
 }
 
 .theme-default .departure-row-min {
 	--scale: 1;
 
 	margin-left: 0;
-	width: calc(2em / var(--scale));
+	width: 2rem;
 }
 
 .departure-row-route {
 	--scale: 0.5;
-	--top-bottom-margins: calc((var(--departure-row-height) - var(--departure-row-route-height)) / (2 * var(--scale)));
+	--top-bottom-margins: calc((var(--departure-row-height) - var(--departure-row-route-height)) / 2);
 
 	background-color: var(--theme-primary-color);
-	border-radius: calc(0.25em / var(--scale));
+	border-radius: 0.25rem;
 	color: var(--theme-secondary-color);
 	float: left;
 	font-size: calc(100% * var(--scale));
-	height: calc(var(--departure-row-route-height) / var(--scale));
-	line-height: calc(var(--departure-row-route-height) / var(--scale));
-	margin: var(--top-bottom-margins) 0 var(--top-bottom-margins) calc(0.25em / var(--scale));
+	height: var(--departure-row-route-height);
+	line-height: var(--departure-row-route-height);
+	margin: var(--top-bottom-margins) 0 var(--top-bottom-margins) 0.25rem;
 	overflow: hidden;
-	width: calc(1em / var(--scale));
+	width: 1rem;
 }
 
 .theme-bus .departure-row-route {
@@ -75,19 +75,19 @@
 
 	float: right;
 	font-size: calc(100% * var(--scale));
-	height: calc(var(--departure-row-height) / var(--scale));
-	line-height: calc(var(--departure-row-height) / var(--scale));
-	margin: 0 calc(0.25em / var(--scale));
+	height: var(--departure-row-height);
+	line-height: var(--departure-row-height);
+	margin: 0 0.25rem;
 	overflow: hidden;
 	text-align: left;
 	white-space: nowrap;
-	width: calc(5em / var(--scale));
+	width: 5rem;
 }
 
 .theme-metro .departure-row-dest {
-	width: calc(5.5em / var(--scale));
+	width: 5.5rem;
 }
 
 .theme-default .departure-row-dest {
-	width: calc(5.5em / var(--scale));
+	width: 5.5rem;
 }

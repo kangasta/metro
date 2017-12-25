@@ -194,7 +194,7 @@ class App extends Component {
 						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
-					{departures.slice(0,5).map((departure, i) => (
+					{departures.slice(0,6).map((departure, i) => (
 						<DepartureRow
 							key={i}
 							departure={departure}
