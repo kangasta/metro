@@ -56,6 +56,10 @@
 	width: calc(1em / var(--scale));
 }
 
+.theme-bus .departure-row-route {
+	--scale: 0.33;
+}
+
 .theme-metro .departure-row-route {
 	display: none;
 	width: 0;
@@ -73,9 +77,10 @@
 	font-size: calc(100% * var(--scale));
 	height: calc(var(--departure-row-height) / var(--scale));
 	line-height: calc(var(--departure-row-height) / var(--scale));
-	margin-left: calc(0.5em / var(--scale));
+	margin: 0 calc(0.25em / var(--scale));
 	overflow: hidden;
 	text-align: left;
+	white-space: nowrap;
 	width: calc(5em / var(--scale));
 }
 

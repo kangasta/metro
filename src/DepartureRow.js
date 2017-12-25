@@ -20,7 +20,9 @@ class DepartureRow extends Component {
 					{this.props.departure.route}
 				</div>
 				<div className='departure-row-dest'>
-					{this.props.departure.destination}
+					<span className='departure-row-dest-text'>
+						{this.props.departure.destination}
+					</span>
 				</div>
 			</div>
 		);
