@@ -9,6 +9,7 @@ import tram from './img/tram.svg';
 class HslApiUtils {
 	static VT_NONE = -1;
 	static VT_BUS = 3;
+	static VT_FERRY = 4;
 	static VT_METRO = 1;
 	static VT_TRAIN = 109;
 	static VT_TRAM = 0;
@@ -70,12 +71,13 @@ class HslApiUtils {
 			const departure_str = departure.realtimeDeparture + ',' +
 				departure.trip.route.shortName + ',' +
 				departure.headsign;
-			if (departures.includes(departure_str)) return false;
+			if (departures.indexOf(departure_str) >= 0) return false;
 			departures.push(departure_str);
 			return true;
 		});
 	}
-
+	/*
+	// HSL API return stops sorted by distance so this should not be necessary
 	static sortStopsByRadius(stops){
 		return stops.sort((a,b)=>{
 			if (a.node.distance < b.node.distance) return -1;
@@ -83,7 +85,7 @@ class HslApiUtils {
 			return 0;
 		});
 	}
-
+	*/
 	static sortCombinedStoptimesWithoutPatterns(stoptimes) {
 		return stoptimes.sort((a,b)=>{
 			if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;

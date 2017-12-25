@@ -1,0 +1,450 @@
+{
+	"data": {
+	  "stopsByRadius": {
+		"edges": [
+		  {
+			"node": {
+			  "distance": 377,
+			  "stop": {
+				"name": "Niittykumpu (M)",
+				"code": "E2193",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": []
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 423,
+			  "stop": {
+				"name": "Niittykumpu (M)",
+				"code": "E2131",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "121T"
+					  }
+					},
+					"realtimeDeparture": 83340,
+					"realtime": false,
+					"headsign": "Kamppi"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "12"
+					  }
+					},
+					"realtimeDeparture": 83977,
+					"realtime": true,
+					"headsign": "Tapiola"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "195N"
+					  }
+					},
+					"realtimeDeparture": 84180,
+					"realtime": false,
+					"headsign": "Kamppi via Tapiola"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 506,
+			  "stop": {
+				"name": "Niittykumpu (M)",
+				"code": "E2132",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "14B"
+					  }
+					},
+					"realtimeDeparture": 83252,
+					"realtime": true,
+					"headsign": "Kivenlahti"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "122A"
+					  }
+					},
+					"realtimeDeparture": 83520,
+					"realtime": false,
+					"headsign": "Holmanmäki"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "11"
+					  }
+					},
+					"realtimeDeparture": 83940,
+					"realtime": false,
+					"headsign": "Friisilänaukio via Matinkylä(M)"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 539,
+			  "stop": {
+				"name": "Niittykumpu (M)",
+				"code": "E2194",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": []
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 597,
+			  "stop": {
+				"name": "Niittysilta",
+				"code": "E2151",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "122A"
+					  }
+					},
+					"realtimeDeparture": 83460,
+					"realtime": false,
+					"headsign": "Holmanmäki"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "121N"
+					  }
+					},
+					"realtimeDeparture": 85260,
+					"realtime": false,
+					"headsign": "Mankkaa"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "154N"
+					  }
+					},
+					"realtimeDeparture": 87300,
+					"realtime": false,
+					"headsign": "Tuomarila"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 616,
+			  "stop": {
+				"name": "Niittykumpu",
+				"code": "E0009",
+				"vehicleType": 1,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 83460,
+					"realtime": false,
+					"headsign": "Vuosaari"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 22260,
+					"realtime": false,
+					"headsign": "Vuosaari"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 23160,
+					"realtime": false,
+					"headsign": "Vuosaari"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 617,
+			  "stop": {
+				"name": "Niittykumpu",
+				"code": "E0010",
+				"vehicleType": 1,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 82920,
+					"realtime": false,
+					"headsign": "Matinkylä"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 83520,
+					"realtime": false,
+					"headsign": "Matinkylä"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "M1"
+					  }
+					},
+					"realtimeDeparture": 84120,
+					"realtime": false,
+					"headsign": "Matinkylä"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 655,
+			  "stop": {
+				"name": "Riihitonttu",
+				"code": "E2121",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 30300,
+					"realtime": false,
+					"headsign": "Kamppi via Tapiola"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 33540,
+					"realtime": false,
+					"headsign": "Kamppi via Tapiola"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 37620,
+					"realtime": false,
+					"headsign": "Kamppi via Tapiola"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 657,
+			  "stop": {
+				"name": "Haukilahdensolmu",
+				"code": "E2152",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "147T"
+					  }
+					},
+					"realtimeDeparture": 83207,
+					"realtime": true,
+					"headsign": "Kivenlahti"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "156"
+					  }
+					},
+					"realtimeDeparture": 83340,
+					"realtime": false,
+					"headsign": "Tuomarila"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "150K"
+					  }
+					},
+					"realtimeDeparture": 83460,
+					"realtime": false,
+					"headsign": "Saunaniemi"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 681,
+			  "stop": {
+				"name": "Riihitonttu",
+				"code": "E2120",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 32640,
+					"realtime": false,
+					"headsign": "Mankkaa"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 36660,
+					"realtime": false,
+					"headsign": "Mankkaa"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "105"
+					  }
+					},
+					"realtimeDeparture": 40320,
+					"realtime": false,
+					"headsign": "Mankkaa"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 682,
+			  "stop": {
+				"name": "Niittysilta",
+				"code": "E2353",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "121T"
+					  }
+					},
+					"realtimeDeparture": 83400,
+					"realtime": false,
+					"headsign": "Kamppi"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "154N"
+					  }
+					},
+					"realtimeDeparture": 85260,
+					"realtime": false,
+					"headsign": "Kamppi"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "121T"
+					  }
+					},
+					"realtimeDeparture": 87720,
+					"realtime": false,
+					"headsign": "Kamppi"
+				  }
+				]
+			  }
+			}
+		  },
+		  {
+			"node": {
+			  "distance": 697,
+			  "stop": {
+				"name": "Niittykummunsilta",
+				"code": "E3236",
+				"vehicleType": 3,
+				"stoptimesWithoutPatterns": [
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "121T"
+					  }
+					},
+					"realtimeDeparture": 83280,
+					"realtime": false,
+					"headsign": "Kamppi"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "12"
+					  }
+					},
+					"realtimeDeparture": 83917,
+					"realtime": true,
+					"headsign": "Tapiola"
+				  },
+				  {
+					"trip": {
+					  "route": {
+						"shortName": "195N"
+					  }
+					},
+					"realtimeDeparture": 84120,
+					"realtime": false,
+					"headsign": "Kamppi via Tapiola"
+				  }
+				]
+			  }
+			}
+		  }
+		]
+	  }
+	}
+  }
