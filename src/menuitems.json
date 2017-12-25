@@ -9,6 +9,15 @@
 		}
 	},
 	{
+		"destination": "Leppävaara",
+		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"coords": {
+			"lat": 60.219457,
+			"lon": 24.811946,
+			"r":500
+		}
+	},
+	{
 		"destination": "Tapiola",
 		"leaves_in": "\uD83D\uDE89\uFE0E",
 		"coords": {
