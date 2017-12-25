@@ -135,7 +135,7 @@ class App extends Component {
 					return {
 						destination: departure.headsign,
 						route: departure.trip.route.shortName,
-						leaves_in: Math.round(rt_dep - HslApiUtils.currentTimeInMinutes()),
+						leaves_in: HslApiUtils.leavesIn(rt_dep),
 						is_realtime: departure.realtime,
 						vehicle_type: vehicleType,
 						action: ()=>undefined

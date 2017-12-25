@@ -31,6 +31,13 @@ class HslApiUtils {
 			time_in_minutes + 24*60;
 	}
 
+	static leavesIn(departure_time) {
+		var leaves_in = departure_time - HslApiUtils.currentTimeInMinutes();
+		return ((leaves_in < 60) ?
+			Math.round(leaves_in) :
+			Math.round(leaves_in / 60).toString() + 'h');
+	}
+
 	static getSymbol(vehicleType) {
 		switch(vehicleType) {
 		case HslApiUtils.VT_METRO:
