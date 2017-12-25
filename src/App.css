@@ -22,10 +22,11 @@
 	width: 100%;
 }
 
-.app-content {
+.app-col {
 	display: inline-block;
 	left: 50%;
 	margin-top: 0.25rem;
+	vertical-align:top;
 }
 
 .app-head {

@@ -171,6 +171,19 @@ class App extends Component {
 		}
 	}
 
+	getDepartureRowList(departures, a, b) {
+		return departures.slice(a,b).map((departure, i) => (
+			<DepartureRow
+				key={i}
+				departure={departure}
+				onClickCallback={departure.hasOwnProperty('coords') ?
+					()=>{ this.setCoords(departure.coords); } :
+					()=>undefined
+				}
+			/>
+		));
+	}
+
 	isLoading() {
 		return (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting'));
 	}
@@ -187,26 +200,26 @@ class App extends Component {
 		return (
 			<div className={'app theme-' + this.getTheme()}>
 				<div className='app-background'/>
-				<div className='app-content'>
+				<div className='app-col'>
 					<div className={'app-head'}>
 						<div className='app-head-m'>
 							{HslApiUtils.getSymbol(this.getVehicleType())}
 						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
-					{departures.slice(0,6).map((departure, i) => (
-						<DepartureRow
-							key={i}
-							departure={departure}
-							onClickCallback={departure.hasOwnProperty('coords') ?
-								()=>{ this.setCoords(departure.coords); } :
-								()=>undefined
-							}
-						/>
-					))}
-					<div className='app-footer'>
-						<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
-					</div>
+					{this.getDepartureRowList(departures,0,6)}
+				</div>
+				{[6,15].map((first,i)=>{
+					return (
+						<div key={i} className='effect-landscape-only'>
+							<div className='app-col'>
+								{this.getDepartureRowList(departures,first,first+9)}
+							</div>
+						</div>
+					);
+				})}
+				<div className='app-footer'>
+					<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
 				</div>
 			</div>
 		);

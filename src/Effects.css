@@ -1,3 +1,9 @@
+@media screen and (orientation:portrait) {
+	.effect-landscape-only {
+		display: none;
+	}
+}
+
 .effect-blink {
 	animation-name: blink;
 	animation-duration: 2s;
