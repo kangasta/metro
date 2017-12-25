@@ -1,0 +1,7 @@
+<svg version="1.1"
+	baseProfile="full"
+	width="80" height="80"
+	xmlns="http://www.w3.org/2000/svg">
+
+	<circle cx="40" cy="40" r="35" stroke='lightSkyBlue' stroke-width="5" stroke-linecap="round" stroke-dasharray="1,10" fill="transparent"/>
+</svg>

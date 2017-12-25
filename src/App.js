@@ -144,7 +144,8 @@ class App extends Component {
 	}
 
 	getSymbol() {
-		if (!this.state.data.hasOwnProperty('vehicle_type')) return 'M';
+		if (!this.state.data.hasOwnProperty('vehicle_type'))
+			return HslApiUtils.LoadingImg;
 		switch(this.state.data.vehicle_type) {
 		case HslApiUtils.VT_METRO:
 			return HslApiUtils.MetroImg;
@@ -155,12 +156,12 @@ class App extends Component {
 		case HslApiUtils.VT_BUS:
 			return HslApiUtils.BusImg;
 		default:
-			return 'M';
+			return HslApiUtils.LoadingImg;
 		}
 	}
 
 	getTheme() {
-		if (!this.state.data.hasOwnProperty('vehicle_type')) return 'metro';
+		if (!this.state.data.hasOwnProperty('vehicle_type')) return 'default';
 		switch(this.state.data.vehicle_type) {
 		case HslApiUtils.VT_METRO:
 			return 'metro';
@@ -171,7 +172,7 @@ class App extends Component {
 		case HslApiUtils.VT_BUS:
 			return 'bus';
 		default:
-			return 'M';
+			return 'default';
 		}
 	}
 
@@ -189,8 +190,10 @@ class App extends Component {
 		return (
 			<div className={'app app-theme-' + this.getTheme()}>
 				<div className='app-content'>
-					<div className={'app-head ' + (this.isLoading() ? 'app-effect-blink' : '')}>
-						<div className='app-head-m'>{this.getSymbol()}</div>
+					<div className={'app-head'}>
+						<div className='app-head-m'>
+							{this.getSymbol()}
+						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
 					{departures.slice(0,4).map((departure, i) => (

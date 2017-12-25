@@ -1,6 +1,7 @@
 import React from 'react';
 
 import bus from './img/bus.svg';
+import loading from './img/loading.svg';
 import metro from './img/metro.svg';
 import train from './img/train.svg';
 import tram from './img/tram.svg';
@@ -13,6 +14,7 @@ class HslApiUtils {
 
 	static BusImg = <img src={bus} alt='B'/>;
 	static MetroImg = <img src={metro} alt='M'/>;
+	static LoadingImg = <img src={loading} alt='L' className='app-effect-rotate'/>;
 	static TrainImg = <img src={train} alt='S'/>;
 	static TramImg = <img src={tram} alt='T'/>;
 
