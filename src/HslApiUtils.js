@@ -14,7 +14,7 @@ class HslApiUtils {
 
 	static BusImg = <img src={bus} alt='B'/>;
 	static MetroImg = <img src={metro} alt='M'/>;
-	static LoadingImg = <img src={loading} alt='L' className='app-effect-rotate'/>;
+	static LoadingImg = <img src={loading} alt='L' className='effect-rotate'/>;
 	static TrainImg = <img src={train} alt='S'/>;
 	static TramImg = <img src={tram} alt='T'/>;
 

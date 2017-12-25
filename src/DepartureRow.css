@@ -1,0 +1,37 @@
+.departure-row {
+	background-color: var(--theme-secondary-color);
+	border-radius: 0.5em;
+	color: var(--theme-primary-color);
+	height: 2em;
+	margin: 0.25em;
+	width: 8em;
+}
+
+.departure-row-min {
+	float: left;
+	height: 2em;
+	line-height: 2em;
+	overflow: hidden;
+	width: 2em;
+}
+
+.departure-row-min-rt {
+	font-weight: bold;
+}
+
+.departure-row-route {
+	display: none;
+}
+
+.departure-row-dest {
+	--scale: 0.7;
+
+	float: right;
+	font-size: calc(100% * var(--scale));
+	height: calc(2em / var(--scale));
+	line-height: calc(2em / var(--scale));
+	margin-left: calc(0.5em / var(--scale));
+	overflow: hidden;
+	text-align: left;
+	width: calc(5.5em / var(--scale));
+}

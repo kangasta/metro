@@ -1,0 +1,30 @@
+.effect-blink {
+	animation-name: blink;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+	0% {opacity: 0.25;}
+	50% {opacity: 1;}
+	100% {opacity: 0.25;}
+}
+
+.effect-rotate {
+	animation: rotate infinite 13s linear;
+}
+
+@keyframes rotate {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+
+.effect-link {
+	cursor: pointer;
+	opacity: 0.6;
+	transition: opacity 0.5s;
+}
+
+.effect-link:hover {
+	opacity: 1;
+}

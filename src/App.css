@@ -1,3 +1,5 @@
+@import url("Effects.css");
+
 :root {
 	font-size: calc(100 * 1vh / 17);
 }
@@ -25,37 +27,6 @@
 .app-theme-default {
 	--theme-primary-color: LightSkyBlue ;
 	--theme-secondary-color: white;
-}
-
-.app-effect-blink {
-	animation-name: blink;
-	animation-duration: 2s;
-	animation-iteration-count: infinite;
-}
-
-@keyframes blink {
-	0% {opacity: 0.25;}
-	50% {opacity: 1;}
-	100% {opacity: 0.25;}
-}
-
-.app-effect-rotate {
-	animation: rotate infinite 10s linear;
-}
-
-@keyframes rotate {
-	from {transform: rotate(0deg);}
-	to {transform: rotate(360deg);}
-}
-
-.app-effect-link {
-	cursor: pointer;
-	opacity: 0.6;
-	transition: opacity 0.5s;
-}
-
-.app-effect-link:hover {
-	opacity: 1;
 }
 
 .app {
@@ -101,38 +72,6 @@
 
 	font-size: calc(100% * var(--scale));
 	font-weight: bold;
-}
-
-.app-row {
-	background-color: var(--theme-secondary-color);
-	border-radius: 0.5em;
-	color: var(--theme-primary-color);
-	height: 2em;
-	margin: 0.25em;
-	width: 8em;
-}
-
-.app-row-min {
-	float: left;
-	height: 2em;
-	line-height: 2em;
-	width: 2em;
-}
-
-.app-row-min-rt {
-	font-weight: bold;
-}
-
-.app-row-dest {
-	--scale: 0.7;
-
-	float: right;
-	font-size: calc(100% * var(--scale));
-	height: calc(2em / var(--scale));
-	line-height: calc(2em / var(--scale));
-	margin-left: calc(0.5em / var(--scale));
-	text-align: left;
-	width: calc(5.5em / var(--scale));
 }
 
 .app-footer {

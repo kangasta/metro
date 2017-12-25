@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import DepartureRow from './DepartureRow';
 import HslApiUtils from './HslApiUtils';
 import LocationUtils from './LocationUtils';
 
@@ -197,26 +198,17 @@ class App extends Component {
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>
 					{departures.slice(0,4).map((departure, i) => (
-						<div key={i}
-							className={
-								'app-row' +
-								' ' + ((departure.leaves_in <= 2) ? 'app-effect-blink' : '') +
-								' ' + (departure.hasOwnProperty('coords') ? 'app-effect-link' : '')}
-							onClick={departure.hasOwnProperty('coords') ?
+						<DepartureRow
+							key={i}
+							departure={departure}
+							onClickCallback={departure.hasOwnProperty('coords') ?
 								()=>{ this.setCoords(departure.coords); } :
 								()=>undefined
 							}
-						>
-							<div className={'app-row-min ' + (departure.is_realtime ? 'app-row-min-rt' : '')}>
-								{departure.leaves_in}
-							</div>
-							<div className='app-row-dest'>
-								{departure.destination}
-							</div>
-						</div>
+						/>
 					))}
 					<div className='app-footer'>
-						<a className='app-effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
+						<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
 					</div>
 				</div>
 			</div>
