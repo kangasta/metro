@@ -7,6 +7,7 @@ import train from './img/train.svg';
 import tram from './img/tram.svg';
 
 class HslApiUtils {
+	static VT_NONE = -1;
 	static VT_BUS = 3;
 	static VT_METRO = 1;
 	static VT_TRAIN = 109;
@@ -57,6 +58,22 @@ class HslApiUtils {
 			if (departures.includes(departure_str)) return false;
 			departures.push(departure_str);
 			return true;
+		});
+	}
+
+	static sortStopsByRadius(stops){
+		return stops.sort((a,b)=>{
+			if (a.node.distance < b.node.distance) return -1;
+			if (a.node.distance > b.node.distance) return 1;
+			return 0;
+		});
+	}
+
+	static sortCombinedStoptimesWithoutPatterns(stoptimes) {
+		return stoptimes.sort((a,b)=>{
+			if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) < HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return -1;
+			if (HslApiUtils.fixDepartureTimeToMatchDate(a.realtimeDeparture/60) > HslApiUtils.fixDepartureTimeToMatchDate(b.realtimeDeparture/60)) return 1;
+			return 0;
 		});
 	}
 }
