@@ -13,7 +13,8 @@ class App extends Component {
 		this.state = {
 			data: {
 				waiting: 'Waiting location.'
-			}
+			},
+			settings: {}
 		};
 	}
 
@@ -155,21 +156,6 @@ class App extends Component {
 		return this.getLocation();
 	}
 
-	getSymbol() {
-		switch(this.getVehicleType()) {
-		case HslApiUtils.VT_METRO:
-			return HslApiUtils.MetroImg;
-		case HslApiUtils.VT_TRAM:
-			return HslApiUtils.TramImg;
-		case HslApiUtils.VT_TRAIN:
-			return HslApiUtils.TrainImg;
-		case HslApiUtils.VT_BUS:
-			return HslApiUtils.BusImg;
-		default:
-			return HslApiUtils.LoadingImg;
-		}
-	}
-
 	getTheme() {
 		switch(this.getVehicleType()) {
 		case HslApiUtils.VT_METRO:
@@ -204,7 +190,7 @@ class App extends Component {
 				<div className='app-content'>
 					<div className={'app-head'}>
 						<div className='app-head-m'>
-							{this.getSymbol()}
+							{HslApiUtils.getSymbol(this.getVehicleType())}
 						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
 					</div>

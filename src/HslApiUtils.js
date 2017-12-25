@@ -30,6 +30,21 @@ class HslApiUtils {
 			time_in_minutes + 24*60;
 	}
 
+	static getSymbol(vehicleType) {
+		switch(vehicleType) {
+		case HslApiUtils.VT_METRO:
+			return HslApiUtils.MetroImg;
+		case HslApiUtils.VT_TRAM:
+			return HslApiUtils.TramImg;
+		case HslApiUtils.VT_TRAIN:
+			return HslApiUtils.TrainImg;
+		case HslApiUtils.VT_BUS:
+			return HslApiUtils.BusImg;
+		default:
+			return HslApiUtils.LoadingImg;
+		}
+	}
+
 	static getStopsByRadiusQuery(lat, lon, r=1500, n=10) {
 		return (
 			'{ stopsByRadius(' +
