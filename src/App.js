@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import DepartureRow from './DepartureRow';
 import HslApiUtils from './HslApiUtils';
 import LocationUtils from './LocationUtils';
+import StopInfo from './StopInfo';
 
 import './App.css';
 
@@ -235,15 +236,13 @@ class App extends Component {
 			<div className={'app theme-' + HslApiUtils.getTheme(this.getVehicleType())}>
 				<div className='app-background'/>
 				<div className='app-col'>
-					<div className={'app-head'}>
-						<div className='app-head-prefer'>
-							<div className='app-head-prefer-img'>{HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}</div>
-						</div>
-						<div className='app-head-m' onClick={this.choosePreferredVT}>
-							{HslApiUtils.getSymbol(this.getVehicleType())}
-						</div>
-						<div className='app-head-location' onClick={this.choosePreferredStop}>{this.getLocationString()}</div>
-					</div>
+					<StopInfo
+						leftSymbol={HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}
+						mainSymbol={HslApiUtils.getSymbol(this.getVehicleType())}
+						mainSymbolOnClickCallback={this.choosePreferredVT}
+						locationText={this.getLocationString()}
+						locationTextOnClickCallback={this.choosePreferredStop}
+					/>
 					{this.getDepartureRowList(departures,0,6)}
 				</div>
 				{[6,15].map((first,i)=>{

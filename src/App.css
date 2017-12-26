@@ -35,50 +35,6 @@
 	width: 0;
 }
 
-.app-head {
-	background-color: var(--theme-secondary-color);
-	border-radius: 0.5rem;
-	color: var(--theme-primary-color);
-	height: 5rem;
-	margin: 0.25rem;
-	width: 8rem;
-}
-
-.app-head-prefer {
-	font-size: 30%;
-	margin-left: 0.75rem;
-	margin-top: 1.25rem;
-	position: absolute;
-}
-
-.app-head-prefer img {
-	display: inline-block;
-	height: 1rem;
-}
-
-.app-head-m {
-	--scale: 1;
-
-	font-size: calc(100% * var(--scale));
-	height: 3.5rem;
-	line-height: 3.5rem;
-}
-
-.app-head-m img {
-	display: inline-block;
-	margin: 0.25rem;
-	height: 3rem;
-}
-
-.app-head-location {
-	--scale: 0.7;
-
-	font-size: calc(100% * var(--scale));
-	font-weight: bold;
-	height: 1.5rem;
-	line-height: 1.5rem;
-}
-
 .app-footer {
 	--scale: 0.33;
 
