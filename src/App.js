@@ -77,7 +77,7 @@ class App extends Component {
 					'Content-Type': 'application/graphql'
 				},
 				body: HslApiUtils.getStopsByRadiusQuery(
-					this.state.coords.lat, this.state.coords.lon, 2000)
+					this.state.coords.lat, this.state.coords.lon, 2000, 20)
 			})
 				.then(response => response.json())
 				.then((responseJson) => {
