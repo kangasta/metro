@@ -110,7 +110,7 @@ class App extends Component {
 		if (this.state.settings.hasOwnProperty('selectedStop'))
 			return this.state.settings.selectedStop;
 		const vehicleType = this.getVehicleType();
-		if (!vehicleType) return undefined;
+		if (!vehicleType && vehicleType !== 0) return undefined;
 		var stops = this.state.data.stopsByRadius.edges.filter(a => {
 			return a.node.stop.vehicleType === vehicleType;
 		});
