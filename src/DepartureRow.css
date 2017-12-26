@@ -26,6 +26,12 @@
 	font-weight: bold;
 }
 
+.departure-row-min img {
+	display: inline-block;
+	margin: 0.25rem;
+	height: 1em;
+}
+
 .theme-metro .departure-row-min {
 	--scale: 1;
 

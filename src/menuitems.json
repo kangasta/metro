@@ -1,7 +1,8 @@
 [
 	{
 		"destination": "Pasila",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 109,
 		"coords": {
 			"lat": 60.199721,
 			"lon": 24.932629,
@@ -10,7 +11,8 @@
 	},
 	{
 		"destination": "Leppävaara",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 109,
 		"coords": {
 			"lat": 60.219457,
 			"lon": 24.811946,
@@ -19,7 +21,8 @@
 	},
 	{
 		"destination": "Tapiola",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 1,
 		"coords": {
 			"lat": 60.175062,
 			"lon": 24.803141,
@@ -28,7 +31,8 @@
 	},
 	{
 		"destination": "Kamppi",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 1,
 		"coords": {
 			"lat": 60.168796,
 			"lon": 24.931762,
@@ -37,7 +41,8 @@
 	},
 	{
 		"destination": "Rautatientori",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 1,
 		"coords": {
 			"lat": 60.170644,
 			"lon": 24.941437,
@@ -46,7 +51,8 @@
 	},
 	{
 		"destination": "Itäkeskus",
-		"leaves_in": "\uD83D\uDE89\uFE0E",
+		"leaves_in": "",
+		"vehicle_type": 1,
 		"coords": {
 			"lat": 60.209852,
 			"lon": 25.077584,
