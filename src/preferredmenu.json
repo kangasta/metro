@@ -1,0 +1,28 @@
+[
+
+	{
+		"destination": "Bus",
+		"leaves_in": "",
+		"vehicle_type": 3
+	},
+	{
+		"destination": "Metro",
+		"leaves_in": "",
+		"vehicle_type": 1
+	},
+	{
+		"destination": "Train",
+		"leaves_in": "",
+		"vehicle_type": 109
+	},
+	{
+		"destination": "Tram",
+		"leaves_in": "",
+		"vehicle_type": 0
+	},
+	{
+		"destination": "Default",
+		"leaves_in": "",
+		"vehicle_type": -1
+	}
+]

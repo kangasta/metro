@@ -44,6 +44,18 @@
 	width: 8rem;
 }
 
+.app-head-prefer {
+	font-size: 30%;
+	margin-left: 0.75rem;
+	margin-top: 1.25rem;
+	position: absolute;
+}
+
+.app-head-prefer img {
+	display: inline-block;
+	height: 1rem;
+}
+
 .app-head-m {
 	--scale: 1;
 

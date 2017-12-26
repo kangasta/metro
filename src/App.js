@@ -14,8 +14,13 @@ class App extends Component {
 			data: {
 				waiting: 'Waiting location.'
 			},
-			settings: {}
+			settings: {
+				preferredVehicleType: HslApiUtils.VT_NONE
+			},
+			menu_screen: null
 		};
+
+		this.choosePreferredVT = this.choosePreferredVT.bind(this);
 	}
 
 	componentDidMount() {
@@ -89,7 +94,13 @@ class App extends Component {
 
 	getVehicleType() {
 		if (this.isLoading() || this.isError()) return undefined;
-		const vehicleTypes = [HslApiUtils.VT_METRO, HslApiUtils.VT_TRAIN, HslApiUtils.VT_TRAM, HslApiUtils.VT_BUS];
+		const vehicleTypes = [
+			this.state.settings.preferredVehicleType,
+			HslApiUtils.VT_METRO,
+			HslApiUtils.VT_TRAIN,
+			HslApiUtils.VT_TRAM,
+			HslApiUtils.VT_BUS
+		];
 		for (var i = 0; i < vehicleTypes.length && !HslApiUtils.checkStopResponseForVehicleType(this.state.data, vehicleTypes[i]); i++);
 		return vehicleTypes[i];
 	}
@@ -145,6 +156,8 @@ class App extends Component {
 	}
 
 	getLocationString() {
+		if (this.state.menu_screen)
+			return this.state.menu_screen.info;
 		if (this.state.data.hasOwnProperty('error'))
 			return this.state.data.error;
 		if (this.state.data.hasOwnProperty('loading'))
@@ -178,14 +191,29 @@ class App extends Component {
 				departure={departure}
 				onClickCallback={departure.hasOwnProperty('coords') ?
 					()=>{ this.setCoords(departure.coords); } :
-					()=>undefined
+					(this.state.menu_screen ?
+						()=>{this.state.menu_screen.callback(departure);} :
+						()=>undefined)
 				}
 			/>
 		));
 	}
 
+	choosePreferredVT() {
+		this.setState({menu_screen: {
+			info: 'Select preferation.',
+			options: require('./preferredmenu.json'),
+			callback: (departure)=>{
+				this.setState({
+					settings: {preferredVehicleType: departure.vehicle_type},
+					menu_screen: null
+				});
+			}
+		}});
+	}
+
 	isLoading() {
-		return (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting'));
+		return (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting') || this.state.menu_screen);
 	}
 
 	isError() {
@@ -196,13 +224,18 @@ class App extends Component {
 		var departures = require('./menuitems.json');
 		if (!this.isLoading() && !this.isError() && this.getLocation()) {
 			departures = this.getDepartures();
-		}
+		} else if (this.state.menu_screen)
+			departures = this.state.menu_screen.options;
 		return (
 			<div className={'app theme-' + this.getTheme()}>
 				<div className='app-background'/>
 				<div className='app-col'>
 					<div className={'app-head'}>
-						<div className='app-head-m'>
+						<div className='app-head-prefer'>
+							{/*<div className='app-head-prefer-text'>Prefer:</div>*/}
+							<div className='app-head-prefer-img'>{HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}</div>
+						</div>
+						<div className='app-head-m' onClick={this.choosePreferredVT}>
 							{HslApiUtils.getSymbol(this.getVehicleType())}
 						</div>
 						<div className='app-head-location'>{this.getLocationString()}</div>
