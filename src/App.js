@@ -172,21 +172,6 @@ class App extends Component {
 		return this.getLocation();
 	}
 
-	getTheme() {
-		switch(this.getVehicleType()) {
-		case HslApiUtils.VT_METRO:
-			return 'metro';
-		case HslApiUtils.VT_TRAM:
-			return 'tram';
-		case HslApiUtils.VT_TRAIN:
-			return 'train';
-		case HslApiUtils.VT_BUS:
-			return 'bus';
-		default:
-			return 'default';
-		}
-	}
-
 	getDepartureRowList(departures, a, b) {
 		return departures.slice(a,b).map((departure, i) => (
 			<DepartureRow
@@ -247,12 +232,11 @@ class App extends Component {
 		} else if (this.state.menu_screen)
 			departures = this.state.menu_screen.options;
 		return (
-			<div className={'app theme-' + this.getTheme()}>
+			<div className={'app theme-' + HslApiUtils.getTheme(this.getVehicleType())}>
 				<div className='app-background'/>
 				<div className='app-col'>
 					<div className={'app-head'}>
 						<div className='app-head-prefer'>
-							{/*<div className='app-head-prefer-text'>Prefer:</div>*/}
 							<div className='app-head-prefer-img'>{HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}</div>
 						</div>
 						<div className='app-head-m' onClick={this.choosePreferredVT}>

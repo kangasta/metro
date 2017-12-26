@@ -58,6 +58,21 @@ class HslApiUtils {
 		}
 	}
 
+	static getTheme(vehicleType) {
+		switch(vehicleType) {
+		case HslApiUtils.VT_METRO:
+			return 'metro';
+		case HslApiUtils.VT_TRAM:
+			return 'tram';
+		case HslApiUtils.VT_TRAIN:
+			return 'train';
+		case HslApiUtils.VT_BUS:
+			return 'bus';
+		default:
+			return 'default';
+		}
+	}
+
 	static getStopsByRadiusQuery(lat, lon, r=1500, n=10) {
 		return (
 			'{ stopsByRadius(' +

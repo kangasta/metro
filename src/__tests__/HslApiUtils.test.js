@@ -47,6 +47,16 @@ describe('HslApiUtils.getSymbol',()=>{
 	});
 });
 
+describe('HslApiUtils.getTheme',()=>{
+	it('gives symbol matching given vehicle type',()=>{
+		const names = ['bus', 'metro', 'train', 'tram', 'default', 'default'];
+		const vehicleTypes = [HslApiUtils.VT_BUS, HslApiUtils.VT_METRO, HslApiUtils.VT_TRAIN, HslApiUtils.VT_TRAM, HslApiUtils.VT_NONE, undefined];
+		for (var i = 0; i < vehicleTypes.length; i++) {
+			expect(HslApiUtils.getTheme(vehicleTypes[i])).toEqual(names[i]);
+		}
+	});
+});
+
 describe('HslApiUtils.getStopsByRadiusQuery',()=>{
 	it('gives query based on location data',()=>{
 		expect(HslApiUtils.getStopsByRadiusQuery(123,456)).toMatch(
