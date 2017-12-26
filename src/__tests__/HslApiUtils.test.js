@@ -35,11 +35,14 @@ describe('HslApiUtils.leavesIn',()=>{
 
 describe('HslApiUtils.getSymbol',()=>{
 	it('gives symbol matching given vehicle type',()=>{
-		const names = ['bus', 'metro', 'train', 'tram', 'loading'];
-		const vehicleTypes = [HslApiUtils.VT_BUS, HslApiUtils.VT_METRO, HslApiUtils.VT_TRAIN, HslApiUtils.VT_TRAM, HslApiUtils.VT_NONE];
+		const names = ['bus', 'metro', 'train', 'tram', '', 'loading'];
+		const vehicleTypes = [HslApiUtils.VT_BUS, HslApiUtils.VT_METRO, HslApiUtils.VT_TRAIN, HslApiUtils.VT_TRAM, HslApiUtils.VT_NONE, undefined];
 		for (var i = 0; i < vehicleTypes.length; i++) {
 			const wrapper = mount(<div>{HslApiUtils.getSymbol(vehicleTypes[i])}</div>);
-			expect(wrapper.find('img').html()).toContain(names[i]);
+			if (vehicleTypes[i] != HslApiUtils.VT_NONE)
+				expect(wrapper.find('img').html()).toContain(names[i]);
+			else
+				expect(wrapper.find('img').exists()).toBe(false);
 		}
 	});
 });

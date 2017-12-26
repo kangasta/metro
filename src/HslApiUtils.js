@@ -51,6 +51,8 @@ class HslApiUtils {
 			return HslApiUtils.TrainImg;
 		case HslApiUtils.VT_BUS:
 			return HslApiUtils.BusImg;
+		case HslApiUtils.VT_NONE:
+			return '';
 		default:
 			return HslApiUtils.LoadingImg;
 		}
