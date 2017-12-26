@@ -21,6 +21,7 @@ class App extends Component {
 		};
 
 		this.choosePreferredVT = this.choosePreferredVT.bind(this);
+		this.choosePreferredStop = this.choosePreferredStop.bind(this);
 	}
 
 	componentDidMount() {
@@ -106,6 +107,8 @@ class App extends Component {
 	}
 
 	getLocation() {
+		if (this.state.settings.hasOwnProperty('selectedStop'))
+			return this.state.settings.selectedStop;
 		const vehicleType = this.getVehicleType();
 		if (!vehicleType) return undefined;
 		var stops = this.state.data.stopsByRadius.edges.filter(a => {
@@ -201,11 +204,28 @@ class App extends Component {
 
 	choosePreferredVT() {
 		this.setState({menu_screen: {
-			info: 'Select preferation.',
+			info: 'Select preferation:',
 			options: require('./preferredmenu.json'),
 			callback: (departure)=>{
 				this.setState({
 					settings: {preferredVehicleType: departure.vehicle_type},
+					menu_screen: null
+				});
+			}
+		}});
+	}
+
+	choosePreferredStop() {
+		if (this.isLoading() || this.isError()) return;
+		this.setState({menu_screen: {
+			info: 'Select stop:',
+			options: HslApiUtils.getListOfStopsAvailable(this.state.data),
+			callback: (departure)=>{
+				this.setState({
+					settings: {
+						selectedStop: departure.destination,
+						preferredVehicleType: departure.vehicle_type
+					},
 					menu_screen: null
 				});
 			}
@@ -238,7 +258,7 @@ class App extends Component {
 						<div className='app-head-m' onClick={this.choosePreferredVT}>
 							{HslApiUtils.getSymbol(this.getVehicleType())}
 						</div>
-						<div className='app-head-location'>{this.getLocationString()}</div>
+						<div className='app-head-location' onClick={this.choosePreferredStop}>{this.getLocationString()}</div>
 					</div>
 					{this.getDepartureRowList(departures,0,6)}
 				</div>

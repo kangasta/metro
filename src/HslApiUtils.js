@@ -105,6 +105,21 @@ class HslApiUtils {
 			return 0;
 		});
 	}
+
+	static getListOfStopsAvailable(data) {
+		var stops = [];
+		data.stopsByRadius.edges.forEach((edge)=>{
+			if (stops.findIndex((stop)=>{
+				return (stop.destination === edge.node.stop.name);
+			}) >= 0) return;
+			stops.push({
+				destination: edge.node.stop.name,
+				leaves_in: '',
+				vehicle_type: edge.node.stop.vehicleType
+			});
+		});
+		return stops;
+	}
 }
 
 export default HslApiUtils;
