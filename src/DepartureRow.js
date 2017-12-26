@@ -15,7 +15,7 @@ class DepartureRow extends Component {
 				onClick={this.props.onClickCallback}
 			>
 				<div className={'departure-row-min ' + (this.props.departure.is_realtime ? 'departure-row-min-rt' : '')}>
-					{(this.props.departure.leaves_in ?
+					{((this.props.departure.leaves_in || this.props.departure.leaves_in === 0) ?
 						this.props.departure.leaves_in :
 						HslApiUtils.getSymbol(this.props.departure.vehicle_type)
 					)}
