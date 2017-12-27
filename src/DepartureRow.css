@@ -83,7 +83,7 @@
 	font-size: calc(100% * var(--scale));
 	height: var(--departure-row-height);
 	line-height: var(--departure-row-height);
-	margin: 0 0.25rem;
+	margin: 0 0.20rem;
 	overflow: hidden;
 	text-align: left;
 	white-space: nowrap;
