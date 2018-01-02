@@ -5,7 +5,7 @@
 
 ### What?
 
-Simple react app to show next departures of nearest HSL metro station. See [live](https://kangasta.github.io/metro/).
+Simple react app to show next departures of nearest HSL metro station. See [live](https://kangasta.github.io/metro/). Allows selecting preferred mode of transportation by clicking the vehicle symbol and selecting a specific nearby stop by clicking the stop name.
 
 ### Why?
 
