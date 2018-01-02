@@ -94,7 +94,6 @@ describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 	});
 });
 
-
 describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 	it('removes duplicates from combined stoptimes array',()=>{
 		const response = require('../__mocks__/stopsByRadius_niittykumpu.json');
@@ -108,5 +107,18 @@ describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 		expect(stoptimes.reduceRight(test_fun)).toBeFalsy();
 		stoptimes = HslApiUtils.sortCombinedStoptimesWithoutPatterns(stoptimes);
 		expect(stoptimes.reduceRight(test_fun)).toBeTruthy();
+	});
+});
+
+
+describe('HslApiUtils.getListOfStopsAvailable',()=>{
+	it('gives stops from data without duplicates',()=>{
+		var response = require('../__mocks__/stopsByRadius_niittykumpu.json');
+		response.data.stopsByRadius.edges = response.data.stopsByRadius.edges.slice(0,7);
+		const stops = ['Niittykumpu (M)', 'Niittysilta', 'Niittykumpu']
+			.map((stop_name,i)=>{
+				return {destination: stop_name, leaves_in: '', vehicle_type: (i !== 2 ? 3 : 1)};
+			});
+		expect(HslApiUtils.getListOfStopsAvailable(response.data)).toEqual(stops);
 	});
 });
