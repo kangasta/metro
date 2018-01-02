@@ -56,11 +56,6 @@ class App extends Component {
 		clearInterval(this.state.coordsIntervalId);
 	}
 
-	errorIfNotError() {
-		if (this.state.data.hasOwnProperty('error')) return;
-		this.setState({data: {error: 'Unhandled error.'}});
-	}
-
 	setCoords(coords) {
 		this.setState({coords: coords},()=>{
 			if (this.state.hasOwnProperty('coordsIntervalId'))
