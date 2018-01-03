@@ -2,9 +2,9 @@ language: node_js
 node_js:
   - "node"
 
-#addons:
-#    code_climate:
-#      repo_token:
+addons:
+    code_climate:
+      repo_token: ce02b8f433bcfcf474b8cb3e6bc363b07fc9dc5ecc229de03df6c0fc212bad93
 
 jobs:
     include:
@@ -21,6 +21,6 @@ jobs:
             branch: master
 
 
-#after_success:
-#  - npm install -g codeclimate-test-reporter
-#  - codeclimate-test-reporter < coverage/lcov.info
+after_success:
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < coverage/lcov.info
