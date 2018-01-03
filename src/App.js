@@ -183,6 +183,18 @@ class App extends Component {
 		));
 	}
 
+	getStopInfo() {
+		return (
+			<StopInfo
+				leftSymbol={HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}
+				mainSymbol={HslApiUtils.getSymbol(this.getVehicleType())}
+				mainSymbolOnClickCallback={this.choosePreferredVT}
+				locationText={this.getLocationString()}
+				locationTextOnClickCallback={this.choosePreferredStop}
+			/>
+		);
+	}
+
 	choosePreferredVT() {
 		this.setState({menu_screen: {
 			info: 'Select preferation:',
@@ -231,24 +243,16 @@ class App extends Component {
 			<div className={'app theme-' + HslApiUtils.getTheme(this.getVehicleType())}>
 				<div className='app-background'/>
 				<div className='app-col'>
-					<StopInfo
-						leftSymbol={HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}
-						mainSymbol={HslApiUtils.getSymbol(this.getVehicleType())}
-						mainSymbolOnClickCallback={this.choosePreferredVT}
-						locationText={this.getLocationString()}
-						locationTextOnClickCallback={this.choosePreferredStop}
-					/>
+					{this.getStopInfo()}
 					{this.getDepartureRowList(departures,0,6)}
 				</div>
-				{[6,15].map((first,i)=>{
-					return (
-						<div key={i}
-							className={'app-col effect-landscape-only ' +
-								((first >= departures.length) ? 'app-col-empty' : '')}>
-							{this.getDepartureRowList(departures,first,first+9)}
-						</div>
-					);
-				})}
+				{[6,15].map((first,i)=>(
+					<div key={i}
+						className={'app-col effect-landscape-only ' +
+							((first >= departures.length) ? 'app-col-empty' : '')}>
+						{this.getDepartureRowList(departures,first,first+9)}
+					</div>
+				))}
 				<div className='app-footer'>
 					<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
 				</div>
