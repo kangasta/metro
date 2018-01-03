@@ -13,7 +13,7 @@ class App extends Component {
 
 		this.state = {
 			data: {
-				waiting: 'Waiting location.'
+				loading: 'Waiting location.'
 			},
 			settings: {
 				preferredVehicleType: HslApiUtils.VT_NONE
@@ -161,8 +161,6 @@ class App extends Component {
 			return this.state.data.error;
 		if (this.state.data.hasOwnProperty('loading'))
 			return this.state.data.loading;
-		if (this.state.data.hasOwnProperty('waiting'))
-			return this.state.data.waiting;
 		if (!this.getLocation())
 			return 'No nearby stations.';
 		return this.getLocation();
@@ -236,7 +234,7 @@ class App extends Component {
 	}
 
 	isLoading() {
-		return (this.state.data.hasOwnProperty('loading') || this.state.data.hasOwnProperty('waiting') || this.state.menu_screen);
+		return (this.state.data.hasOwnProperty('loading') || this.state.menu_screen);
 	}
 
 	isError() {
