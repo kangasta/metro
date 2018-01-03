@@ -1,5 +1,7 @@
 # metro
 [![Build Status](https://travis-ci.org/kangasta/metro.svg?branch=master)](https://travis-ci.org/kangasta/metro)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a28d52f50bf259e2547a/test_coverage)](https://codeclimate.com/github/kangasta/metro/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a28d52f50bf259e2547a/maintainability)](https://codeclimate.com/github/kangasta/metro/maintainability)
 
 ## Usage
 
