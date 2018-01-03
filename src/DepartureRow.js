@@ -5,20 +5,39 @@ import './DepartureRow.css';
 import HslApiUtils from './HslApiUtils';
 
 class DepartureRow extends Component {
+	getBlinkClass() {
+		if ((this.props.departure.leaves_in || this.props.departure.leaves_in === 0) && this.props.departure.leaves_in <= 2)
+			return ' effect-blink';
+		return '';
+	}
+
+	getLinkClass() {
+		if (!this.props.departure.leaves_in && this.props.departure.leaves_in !== 0)
+			return ' effect-link';
+		return '';
+	}
+
+	getRealtimeClass() {
+		if (this.props.departure.is_realtime)
+			return ' departure-row-min-rt';
+		return '';
+	}
+
+	getLeavesInContent() {
+		if (this.props.departure.leaves_in || this.props.departure.leaves_in === 0)
+			return this.props.departure.leaves_in;
+		return HslApiUtils.getSymbol(this.props.departure.vehicle_type);
+
+	}
+
 	render() {
 		return (
 			<div
-				className={
-					'departure-row' +
-					' ' + (((this.props.departure.leaves_in || this.props.departure.leaves_in === 0) && this.props.departure.leaves_in <= 2) ? 'effect-blink' : '') +
-					' ' + ((!this.props.departure.leaves_in && this.props.departure.leaves_in !== 0) ? 'effect-link' : '')}
+				className={'departure-row' + this.getBlinkClass() + this.getLinkClass()}
 				onClick={this.props.onClickCallback}
 			>
-				<div className={'departure-row-min ' + (this.props.departure.is_realtime ? 'departure-row-min-rt' : '')}>
-					{((this.props.departure.leaves_in || this.props.departure.leaves_in === 0) ?
-						this.props.departure.leaves_in :
-						HslApiUtils.getSymbol(this.props.departure.vehicle_type)
-					)}
+				<div className={'departure-row-min ' + this.getRealtimeClass()}>
+					{this.getLeavesInContent()}
 				</div>
 				<div className='departure-row-route'>
 					{this.props.departure.route}
