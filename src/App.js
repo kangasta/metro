@@ -195,6 +195,16 @@ class App extends Component {
 		);
 	}
 
+	getLandscapeOnlyCols(departures) {
+		return [6,15].map((first,i)=>(
+			<div key={i}
+				className={'app-col effect-landscape-only ' +
+					((first >= departures.length) ? 'app-col-empty' : '')}>
+				{this.getDepartureRowList(departures,first,first+9)}
+			</div>
+		));
+	}
+
 	choosePreferredVT() {
 		this.setState({menu_screen: {
 			info: 'Select preferation:',
@@ -246,13 +256,7 @@ class App extends Component {
 					{this.getStopInfo()}
 					{this.getDepartureRowList(departures,0,6)}
 				</div>
-				{[6,15].map((first,i)=>(
-					<div key={i}
-						className={'app-col effect-landscape-only ' +
-							((first >= departures.length) ? 'app-col-empty' : '')}>
-						{this.getDepartureRowList(departures,first,first+9)}
-					</div>
-				))}
+				{this.getLandscapeOnlyCols(departures)}
 				<div className='app-footer'>
 					<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
 				</div>
