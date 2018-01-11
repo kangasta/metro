@@ -46,6 +46,12 @@
 	transform: translate(-50%,0);
 }
 
+.app-footer-divider {
+	display: inline-block;
+	text-align: center;
+	width: 0.5rem;
+}
+
 a {
 	color: white;
 }

@@ -257,6 +257,8 @@ class App extends Component {
 				{this.getLandscapeOnlyCols(departures)}
 				<div className='app-footer'>
 					<a className='effect-link' href='https://github.com/kangasta/metro'>kangasta / metro</a>
+					<span className='app-footer-divider'>|</span>
+					<a className='effect-link' href='https://digitransit.fi/en/developers/apis/1-routing-api/'>data source</a>
 				</div>
 			</div>
 		);
