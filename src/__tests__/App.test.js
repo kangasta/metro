@@ -36,20 +36,6 @@ describe('App',()=>{
 		jest.resetAllMocks();
 		coordsSpy.mockRestore();
 	}),
-	it('updates renders departure info after succesfull fetch',()=>{
-		const mockFetch = jest.fn(()=>{
-			console.log('asd');
-			return Promise.resolve({
-				json: require('../__mocks__/stopsByRadius_niittykumpu.json')
-			});
-		});
-		const realFetch = fetch;
-		global.fetch = mockFetch;
-
-		const wrapper = shallow(<App/>);
-
-		global.fetch = realFetch;
-	});
 	it('clears timers at unmount', () => {
 		const wrapper = shallow(<App />);
 		const ids = [
