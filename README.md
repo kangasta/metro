@@ -23,7 +23,7 @@ The app works as it is in the regions served by HSL. Should be somewhat easily p
 
 ## Preview
 
-Screenshot of the app, with the landscape only columns disabled, below:
+Screenshot of the app, with the landscape only columns disabled:
 ![App screenshot](public/preview.png)
 
 ## Developing
