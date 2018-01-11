@@ -21,6 +21,11 @@ The app polls browser for location data and sends a GraphQL query to HSL API to 
 
 The app works as it is in the regions served by HSL. Should be somewhat easily ported or extended to support other regions using the same API.
 
+## Preview
+
+Screenshot of the app, with the landscape only columns disabled, below:
+![App screenshot](public/preview.png)
+
 ## Developing
 
 Created based on [create-react-app](https://github.com/facebookincubator/create-react-app), see README over there for details.
