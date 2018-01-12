@@ -49,6 +49,20 @@ describe('App',()=>{
 			fetchSpy.mockRestore();
 		});
 	}),
+	it('allows selecting location before location has been detected',()=>{
+		const querySpy = jest.spyOn(App.prototype, 'sendQueryAndUpdateState');
+
+		const wrapper = mount(<App />);
+		expect(wrapper.state().hasOwnProperty('coords')).toBe(false);
+		wrapper.find('.departure-row').first().simulate('click');
+		expect(wrapper.state().hasOwnProperty('coords')).toBe(true);
+		expect(wrapper.state().coords).toEqual(require('../menuitems.json')[0].coords);
+		expect(querySpy).toHaveBeenCalled();
+		expect(clearInterval).toHaveBeenCalledWith(wrapper.state('coordsIntervalId'));
+
+		jest.resetAllMocks();
+		querySpy.mockRestore();
+	});
 	it('clears timers at unmount', () => {
 		const wrapper = shallow(<App />);
 		const ids = [
