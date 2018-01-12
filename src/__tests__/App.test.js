@@ -23,18 +23,31 @@ describe('App',()=>{
 		locationSpy.mockRestore();
 		querySpy.mockRestore();
 	});
-	it('polls location at mount time if available',()=>{
+	it('polls location and fetches data at mount time', async ()=>{
 		const coords = {lat: 60, lon: 24};
+		const coordsPromise = Promise.resolve(coords);
 		const coordsSpy = jest.spyOn(LocationUtils, 'getCoords').mockImplementation(()=>{
-			return Promise.resolve(coords);
+			return coordsPromise;
+		});
+		const fetchPromise = Promise.resolve({
+			json: ()=>require('../__mocks__/stopsByRadius_niittykumpu.json')
+		});
+		const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation(()=>{
+			return fetchPromise;
 		});
 
-		shallow(<App />);
+		const wrapper = await shallow(<App />);
 		expect(coordsSpy).toHaveBeenCalled();
-		// TODO: Check that state is updated
+		return Promise.all([coordsPromise, fetchPromise]).then(()=>{
+			expect(fetchSpy).toHaveBeenCalled();
+			expect(wrapper.state().hasOwnProperty('coords')).toBe(true);
+			expect(wrapper.state().coords).toEqual(coords);
+			// TODO: Check that state.data is updated
 
-		jest.resetAllMocks();
-		coordsSpy.mockRestore();
+			jest.resetAllMocks();
+			coordsSpy.mockRestore();
+			fetchSpy.mockRestore();
+		});
 	}),
 	it('clears timers at unmount', () => {
 		const wrapper = shallow(<App />);
