@@ -19,3 +19,10 @@ describe('StopInfo',()=>{
 			wrapper.find('.' + clickables[i]).simulate('click');
 	});
 });
+
+describe('StopInfo.getSideElement',()=>{
+	it('returns undefined with invalid side', () => {
+		const wrapper = shallow(<StopInfo/>);
+		expect(wrapper.instance().getSideElement('duck')).toBe(undefined);
+	});
+});
