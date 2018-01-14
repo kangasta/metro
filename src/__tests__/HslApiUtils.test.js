@@ -94,15 +94,15 @@ describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
 	});
 });
 
-describe('HslApiUtils.filterOutStoptimesWithoutPatternsDuplicates',()=>{
-	it('removes duplicates from combined stoptimes array',()=>{
+describe('HslApiUtils.sortCombinedStoptimesWithoutPatterns',()=>{
+	it('sorts combined stoptimes array',()=>{
 		const response = require('../__mocks__/stopsByRadius_niittykumpu.json');
 		var stoptimes = [];
 		for (var i = 0; i<3; i++) {
 			stoptimes = stoptimes.concat(response.data.stopsByRadius.edges[Math.min(1,i)].node.stop.stoptimesWithoutPatterns);
 		}
 		const test_fun = (prev, curr)=>{
-			return ((prev.realtimeDeparture >= curr.realtimeDeparture) ? curr : 0);
+			return ((HslApiUtils.fixDepartureTimeToMatchDate(prev.realtimeDeparture / 60) >= HslApiUtils.fixDepartureTimeToMatchDate(curr.realtimeDeparture / 60)) ? curr : 0);
 		};
 		expect(stoptimes.reduceRight(test_fun)).toBeFalsy();
 		stoptimes = HslApiUtils.sortCombinedStoptimesWithoutPatterns(stoptimes);
