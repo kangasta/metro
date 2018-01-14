@@ -181,10 +181,20 @@ class App extends Component {
 		));
 	}
 
+	getSelectedText() {
+		var text = '';
+		if (this.state.settings.preferredVehicleType !== HslApiUtils.VT_NONE)
+			text = 'Preferred';
+		if (this.state.settings.hasOwnProperty('selectedStop'))
+			text = 'Selected';
+		return text;
+	}
+
 	getStopInfo() {
 		return (
 			<StopInfo
 				leftSymbol={HslApiUtils.getSymbol(this.state.settings.preferredVehicleType)}
+				leftText={this.getSelectedText()}
 				mainSymbol={HslApiUtils.getSymbol(this.getVehicleType())}
 				mainSymbolOnClickCallback={this.choosePreferredVT}
 				locationText={this.getLocationString()}

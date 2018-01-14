@@ -8,22 +8,28 @@
 	width: 8rem;
 }
 
-.stopinfo-left-symbol,.stopinfo-right-symbol {
+.stopinfo-left,.stopinfo-right {
 	top: 1.25rem;
 	position: absolute;
 }
 
-.stopinfo-left-symbol {
+.stopinfo-left {
 	left: 0.75rem;
 }
 
-.stopinfo-right-symbol {
+.stopinfo-right {
 	right: 0.75rem;
 }
 
 .stopinfo-left-symbol img,.stopinfo-right-symbol img {
 	display: inline-block;
 	height: 1rem;
+}
+
+.stopinfo-left-text,.stopinfo-right-text {
+	font-size: 20%;
+	overflow: hidden;
+	width: 1rem;
 }
 
 .stopinfo-main-symbol {
