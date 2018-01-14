@@ -36,9 +36,7 @@ class HslApiUtils {
 
 	static leavesIn(departure_time) {
 		var leaves_in = departure_time - HslApiUtils.currentTimeInMinutes();
-		return ((leaves_in < 60) ?
-			Math.round(leaves_in) :
-			Math.round(leaves_in / 60).toString() + 'h');
+		return Math.round(leaves_in);
 	}
 
 	static getSymbol(vehicleType) {

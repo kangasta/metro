@@ -28,8 +28,8 @@ describe('HslApiUtils.leavesIn',()=>{
 		const time_in_minutes = HslApiUtils.currentTimeInMinutes();
 		expect(HslApiUtils.leavesIn(time_in_minutes+1)).toEqual(1);
 		expect(HslApiUtils.leavesIn(time_in_minutes+59)).toEqual(59);
-		expect(HslApiUtils.leavesIn(time_in_minutes+60)).toEqual('1h');
-		expect(HslApiUtils.leavesIn(time_in_minutes+90)).toEqual('2h');
+		expect(HslApiUtils.leavesIn(time_in_minutes+60)).toEqual(60);
+		expect(HslApiUtils.leavesIn(time_in_minutes+90)).toEqual(90);
 	});
 });
 
