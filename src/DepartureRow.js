@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import './DepartureRow.css';
 import HslApiUtils from './HslApiUtils';
@@ -23,11 +24,19 @@ class DepartureRow extends Component {
 		return '';
 	}
 
-	getLeavesInContent() {
-		if (this.props.departure.leaves_in || this.props.departure.leaves_in === 0)
-			return this.props.departure.leaves_in;
-		return HslApiUtils.getSymbol(this.props.departure.vehicle_type);
+	getHHmmClass() {
+		if (this.props.departure.leaves_in && this.props.departure.leaves_in >= 60)
+			return ' departure-row-min-HHmm';
+		return '';
+	}
 
+	getLeavesInContent() {
+		if (this.props.departure.leaves_in || this.props.departure.leaves_in === 0) {
+			var min = this.props.departure.leaves_in;
+			min = (min < 60) ? min : moment().add(min,'m').format('HH:mm');
+			return min;
+		}
+		return HslApiUtils.getSymbol(this.props.departure.vehicle_type);
 	}
 
 	render() {
@@ -36,7 +45,7 @@ class DepartureRow extends Component {
 				className={'departure-row' + this.getBlinkClass() + this.getLinkClass()}
 				onClick={this.props.onClickCallback}
 			>
-				<div className={'departure-row-min ' + this.getRealtimeClass()}>
+				<div className={'departure-row-min ' + this.getRealtimeClass() + this.getHHmmClass()}>
 					{this.getLeavesInContent()}
 				</div>
 				<div className='departure-row-route'>

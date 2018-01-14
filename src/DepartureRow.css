@@ -26,6 +26,10 @@
 	font-weight: bold;
 }
 
+.departure-row-min-HHmm {
+	font-size: 40%;
+}
+
 .departure-row-min img {
 	display: inline-block;
 	margin: 0.25rem;
