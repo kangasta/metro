@@ -11,10 +11,8 @@
 }
 
 .departure-row-min {
-	--scale: 0.75;
-
 	float: left;
-	font-size: calc(100% * var(--scale));
+	font-size: 75%;
 	height: var(--departure-row-height);
 	line-height: var(--departure-row-height);
 	margin-left: 0.25rem;
@@ -37,28 +35,25 @@
 }
 
 .theme-metro .departure-row-min {
-	--scale: 1;
-
+	font-size: 100%;
 	margin-left: 0;
 	width: 2rem;
 }
 
 .theme-default .departure-row-min {
-	--scale: 1;
-
+	font-size: 100%;
 	margin-left: 0;
 	width: 2rem;
 }
 
 .departure-row-route {
-	--scale: 0.5;
-	--top-bottom-margins: calc((var(--departure-row-height) - var(--departure-row-route-height)) / 2);
+	--top-bottom-margins: 0.25rem;
 
 	background-color: var(--theme-primary-color);
 	border-radius: 0.25rem;
 	color: var(--theme-secondary-color);
 	float: left;
-	font-size: calc(100% * var(--scale));
+	font-size: 50%;
 	height: var(--departure-row-route-height);
 	line-height: var(--departure-row-route-height);
 	margin: var(--top-bottom-margins) 0 var(--top-bottom-margins) 0.25rem;
@@ -67,7 +62,7 @@
 }
 
 .theme-bus .departure-row-route {
-	--scale: 0.33;
+	font-size: 33%;
 }
 
 .theme-metro .departure-row-route {
@@ -81,10 +76,8 @@
 }
 
 .departure-row-dest {
-	--scale: 0.7;
-
 	float: right;
-	font-size: calc(100% * var(--scale));
+	font-size: 70%;
 	height: var(--departure-row-height);
 	line-height: var(--departure-row-height);
 	margin: 0 0.20rem;

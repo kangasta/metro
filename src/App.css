@@ -2,7 +2,7 @@
 @import url("Themes.css");
 
 :root {
-	font-size: calc(100 * 1vh / 17);
+	font-size: 5.88vh; /* 100 / 17 = 5.88 */
 }
 
 .app-background {
@@ -36,11 +36,9 @@
 }
 
 .app-footer {
-	--scale: 0.33;
-
 	bottom: 0.25rem;
 	color: var(--theme-secondary-color);
-	font-size: calc(100% * var(--scale));
+	font-size: 33%;
 	left: 50%;
 	position: fixed;
 	transform: translate(-50%,0);
