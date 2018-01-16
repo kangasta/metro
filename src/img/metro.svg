@@ -3,10 +3,16 @@
 	width="80" height="80"
 	xmlns="http://www.w3.org/2000/svg">
 
-	<rect x="0" y="0" width="80" height="80" rx="5" ry="5" fill="orangeRed"/>
-	<rect x="10" y="10" width="60" height="50" rx="5" ry="5" fill="white"/>
-	<rect x="15" y="15" width="50" height="30" rx="5" ry="5" fill="orangeRed"/>
-	<rect x="20" y="65" width="40" height="5" rx="2" ry="2" fill="white"/>
-	<circle cx="17" cy="52" r="2" fill="orangeRed"/>
-	<circle cx="63" cy="52" r="2" fill="orangeRed"/>
+	<defs>
+		<mask id="metro-mask">
+			<rect x="0" y="0" width="80" height="80" rx="5" ry="5" fill="white"/>
+			<rect x="10" y="10" width="60" height="50" rx="5" ry="5" fill="black"/>
+			<rect x="15" y="15" width="50" height="30" rx="5" ry="5" fill="white"/>
+			<rect x="20" y="65" width="40" height="5" rx="2" ry="2" fill="black"/>
+			<circle cx="17" cy="52" r="2" fill="white"/>
+			<circle cx="63" cy="52" r="2" fill="white"/>
+		</mask>
+	</defs>
+
+	<rect x="0" y="0" width="80" height="80" rx="5" ry="5" fill="orangeRed" mask="url(#metro-mask)"/>
 </svg>
