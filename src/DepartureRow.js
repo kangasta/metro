@@ -39,6 +39,12 @@ class DepartureRow extends Component {
 		return HslApiUtils.getSymbol(this.props.departure.vehicle_type);
 	}
 
+	getHasPlatformClass() {
+		if (this.props.departure.platform)
+			return ' departure-row-dest-with-platform';
+		return '';
+	}
+
 	render() {
 		return (
 			<div
@@ -52,9 +58,12 @@ class DepartureRow extends Component {
 					{this.props.departure.route}
 				</div>
 				<div className='departure-row-dest'>
-					<span className='departure-row-dest-text'>
+					<div className={'departure-row-dest-text ' + this.getHasPlatformClass()}>
 						{this.props.departure.destination}
-					</span>
+					</div>
+					<div className={'departure-row-dest-platform ' + this.getHasPlatformClass()}>
+						Platform {this.props.departure.platform}
+					</div>
 				</div>
 			</div>
 		);

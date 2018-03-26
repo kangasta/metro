@@ -79,7 +79,7 @@ class HslApiUtils {
 			'radius: ' + r.toString() + ') { ' +
 			'edges { node { distance stop { name code vehicleType ' +
 			'stoptimesWithoutPatterns(numberOfDepartures: ' + n.toString() + ') { ' +
-			'trip { route { shortName } } realtimeDeparture realtime headsign ' +
+			'trip { route { shortName } } stop { platformCode } realtimeDeparture realtime headsign ' +
 			'} } } } } }'
 		);
 	}

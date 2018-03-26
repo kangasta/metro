@@ -94,3 +94,20 @@
 .theme-default .departure-row-dest {
 	width: 5.5rem;
 }
+
+.departure-row-dest-text.departure-row-dest-with-platform {
+	font-size: 70%;
+	line-height: 0.9rem;
+}
+
+.departure-row-dest-platform {
+	display: none;
+}
+
+.departure-row-dest-platform.departure-row-dest-with-platform {
+	display: block;
+	font-size: 50%;
+	line-height: 0.6rem;
+	position: relative;
+	top: -0.1rem;
+}

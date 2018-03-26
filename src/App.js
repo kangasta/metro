@@ -147,6 +147,7 @@ class App extends Component {
 						route: departure.trip.route.shortName,
 						leaves_in: HslApiUtils.leavesIn(rt_dep),
 						is_realtime: departure.realtime,
+						platform: departure.stop.platformCode,
 						vehicle_type: vehicleType,
 						action: ()=>undefined
 					};
