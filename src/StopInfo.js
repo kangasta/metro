@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import './StopInfo.css';
+import DestinationUtils from './DestinationUtils';
 
 class StopInfo extends Component {
 	constructor(props) {
@@ -59,7 +60,10 @@ class StopInfo extends Component {
 				<div
 					className='stopinfo-location'
 					onClick={this.callbacks.location}
-				>{this.texts.location}</div>
+				>
+					{DestinationUtils.getDestinationText(this.texts.location)}
+					{DestinationUtils.getDestinationMetroSymbol(this.texts.location)}
+				</div>
 			</div>
 		);
 	}

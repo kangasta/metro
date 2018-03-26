@@ -4,6 +4,7 @@ import moment from 'moment';
 
 import './DepartureRow.css';
 import HslApiUtils from './HslApiUtils';
+import DestinationUtils from './DestinationUtils';
 
 class DepartureRow extends Component {
 	getBlinkClass() {
@@ -59,7 +60,8 @@ class DepartureRow extends Component {
 				</div>
 				<div className='departure-row-dest'>
 					<div className={'departure-row-dest-text ' + this.getHasPlatformClass()}>
-						{this.props.departure.destination}
+						{DestinationUtils.getDestinationText(this.props.departure.destination)}
+						{DestinationUtils.getDestinationMetroSymbol(this.props.departure.destination)}
 					</div>
 					<div className={'departure-row-dest-platform ' + this.getHasPlatformClass()}>
 						Platform {this.props.departure.platform}

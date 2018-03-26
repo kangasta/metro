@@ -1,0 +1,14 @@
+.destination-utils-m-symbol {
+	border-radius: 0.25em;
+	border-width: 0.125em;
+	border-style: solid;
+	display: inline-block;
+	font-size: 80%;
+	height: 1.25em;
+	line-height: 1.25em;
+	overflow: hidden;
+	position: relative;
+	bottom: -0.25em;
+	text-align: center;
+	width: 1.25em;
+}
