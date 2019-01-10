@@ -3,6 +3,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a28d52f50bf259e2547a/test_coverage)](https://codeclimate.com/github/kangasta/metro/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a28d52f50bf259e2547a/maintainability)](https://codeclimate.com/github/kangasta/metro/maintainability)
 
+Checkout [kangasta/timetbl](https://github.com/kangasta/timetbl) for slightly different approach! 
+
 ## Usage
 
 ### What?
